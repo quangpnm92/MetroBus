@@ -12,6 +12,6 @@ package com.cs3321.metrobus;
 public class Metrobus {
 
     public static void main(String[] args) {
-        System.out.println("Hello World! 222");
+        
     }
 }

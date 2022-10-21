@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cs3321.metrobus;
+package com.cs3321.metrobus.Entities;
 
 /**
  *
@@ -16,6 +16,13 @@ public class TripInfo {
     
     public String getNameTrip() {
         return name;
+    }
+
+    public TripInfo(String name, int seats) {
+        this.name = name;
+        this.seats = seats;
+        this.available = seats;
+        this.taken = 0;
     }
     public void setSeats(String name) {
         this.name = name;
@@ -41,11 +48,5 @@ public class TripInfo {
     public void setTaken(int taken) {
         this.taken = taken;
     }
-    
-    public void TripInfo(String name, int seats){
-        this.name = name;
-        this.seats = seats;
-        this.available = seats;
-        this.taken = 0;
- }
+  
 }

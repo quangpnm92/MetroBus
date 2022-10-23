@@ -6,7 +6,8 @@ public class PaymentInfo {
     private String name;
     private String expireDate;
     private String cvc;
-
+    private double money;
+    
     public String getCardNumber() {
         return cardNumber;
     }
@@ -21,6 +22,14 @@ public class PaymentInfo {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
     }
 
     public String getExpireDate() {
@@ -39,11 +48,12 @@ public class PaymentInfo {
         this.cvc = cvc;
     }
 
-    public PaymentInfo(String cardNumber, String name, String expireDate, String cvc) {
+    public PaymentInfo(String cardNumber, String name, String expireDate, String cvc, double money) {
         this.cardNumber = cardNumber;
         this.name = name;
         this.expireDate = expireDate;
         this.cvc = cvc;
+        this.money = money;
     }
     
 }

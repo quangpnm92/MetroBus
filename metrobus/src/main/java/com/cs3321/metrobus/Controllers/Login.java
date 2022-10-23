@@ -10,6 +10,7 @@ public class Login{
             sc.useDelimiter(",");
             while (sc.hasNext()){
                 System.out.print(sc.next());
+                //
             }
         }
     }

@@ -10,4 +10,5 @@ package com.cs3321.metrobus.Controllers;
  */
 public class Trip {
     
+
 }

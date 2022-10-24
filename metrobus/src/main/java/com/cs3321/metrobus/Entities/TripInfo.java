@@ -4,49 +4,105 @@
  */
 package com.cs3321.metrobus.Entities;
 
+import java.util.Date;
+
 /**
  *
  * @author Quang Pham
  */
 public class TripInfo {
-    private String name;
+    private String tripID;
+    private String departureCity;
+    private String arrivalCity;
     private int seats;
     private int available;
     private int taken;
-    
-    public String getNameTrip() {
-        return name;
+    private Date departureDate;
+    private int price;
+
+    public String getTripID() {
+        return tripID;
     }
 
-    public TripInfo(String name, int seats) {
-        this.name = name;
-        this.seats = seats;
-        this.available = seats;
-        this.taken = 0;
+    public void setTripID(String tripID) {
+        this.tripID = tripID;
     }
-    public void setSeats(String name) {
-        this.name = name;
+
+    public String getDepartureCity() {
+        return departureCity;
     }
-    
+
+    public void setDepartureCity(String departureCity) {
+        this.departureCity = departureCity;
+    }
+
+    public String getArrivalCity() {
+        return arrivalCity;
+    }
+
+    public void setArrivalCity(String arrivalCity) {
+        this.arrivalCity = arrivalCity;
+    }
+
     public int getSeats() {
         return seats;
     }
+
     public void setSeats(int seats) {
         this.seats = seats;
     }
-    
+
     public int getAvailable() {
         return available;
     }
+
     public void setAvailable(int available) {
-        this.available = seats;
+        this.available = available;
     }
-    
+
     public int getTaken() {
         return taken;
     }
+
     public void setTaken(int taken) {
         this.taken = taken;
     }
+
+    public Date getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(Date departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    
+    public TripInfo(String departure, String arrival, int howManySeats, int year, int month, int day, int hrs, int min) {
+        this.departureCity = departure;
+        this.arrivalCity = arrival;
+        this.seats = howManySeats;
+        this.departureDate = new Date(year, month, day, hrs, min);
+        
+    }
+    
+    public static void main(String[] args) {
+        TripInfo x = new TripInfo("Houston", "Dallas", 50, 2022, 10, 22, 20, 45);
+        
+       
+    }
+    
+    
+    
+    
+    
+    
+
   
 }

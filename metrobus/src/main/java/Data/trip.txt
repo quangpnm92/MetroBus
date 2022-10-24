@@ -1,0 +1,6 @@
+Houston,Dallas,30,50,153
+SanAntonio,Austin,15,50,165
+SantaBarbara,FortWorth,16,50,184
+Detroit,Lancing,4,45,98
+Houston,Lousiana,19,30,144
+Fremonth,Galveston,3,16,174

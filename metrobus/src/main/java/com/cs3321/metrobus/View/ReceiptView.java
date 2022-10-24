@@ -4,15 +4,56 @@
  */
 package com.cs3321.metrobus.View;
 import com.cs3321.metrobus.Controllers.Payment;
+import org.apache.commons.lang3.StringUtils;
 import java.util.Date;
-/**
- *
- * @author Quan
- */
+
+
 public class ReceiptView {
-    
-    public static void printReceipt(double price)
-    {
-        System.out.println("");
+
+    public static void printReceipt(/*String customerName, String departureCity, String arrivalCity, double price*/){
+        String line = new String(new char[48]).replace('\0', '-');
+        Date date = new Date();
+        
+        //delete the following once we pass parameters
+        double price=20;
+        String customerName="Kate Shimek";
+        String departureCity="Houston";
+        String arrivalCity="Dallas";
+        //**********************
+        
+        System.out.println(line);
+        
+        System.out.printf("|%s|%n",
+                StringUtils.center("MetroBus Receipt", 46));
+        System.out.printf("|%s|%n",
+                StringUtils.center(date.toString(),46));
+        
+        System.out.println(line);
+        
+        System.out.printf("|%s|%s|%n",
+                StringUtils.center("Customer", 22),
+                StringUtils.center(customerName, 23));
+        
+        System.out.printf("|%s|%s|%n",
+                StringUtils.center("Departure City", 22),
+                StringUtils.center(departureCity, 23));
+
+        System.out.printf("|%s|%s|%n",
+                StringUtils.center("Arrival City", 22),
+                StringUtils.center(arrivalCity, 23));
+        
+        System.out.printf("|%s|%s|%n",
+                StringUtils.center("Total Price", 22),
+                StringUtils.center("$"+String.format("%,.2f", price), 23));
+
+        System.out.println(line);
+        
+        System.out.printf("|%s|%n",
+                StringUtils.center("Thank you for your purchase!", 46));
+        System.out.printf("|%s|%n",
+                StringUtils.center("Have a nice trip! :)", 46));
+        
+        System.out.println(line);
+        
     }
 }

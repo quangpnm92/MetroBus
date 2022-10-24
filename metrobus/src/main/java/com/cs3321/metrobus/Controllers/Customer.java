@@ -19,13 +19,13 @@ public class Customer {
         return account.getRole() == 1;
     }
 
-    public void addCustomer(AccountInfo account, String userInput, String passInput, int roleInput) {
+    public void addCustomer(AccountInfo staffAccount, AccountInfo custAccount, String userInput, String passInput, int roleInput) {
         //AccountInfo(user, pass, role);
-        if (checkRole(account)) {
-            account.setUsername(userInput);
-            account.setPassword(passInput);
-            account.setRole(roleInput);
-            System.out.println("Customer account created - Username: " + account.getUsername() + " Password: " + account.getPassword());
+        if (checkRole(staffAccount)) {
+            custAccount.setUsername(userInput);
+            custAccount.setPassword(passInput);
+            custAccount.setRole(roleInput);
+            System.out.println("Customer account created - Username: " + custAccount.getUsername() + " Password: " + custAccount.getPassword());
         }
         else {
             System.out.println("You do not have staff access.");
@@ -99,7 +99,7 @@ public class Customer {
         AccountInfo customer = new AccountInfo("cusRhett", "000000",2);
         Customer customerOperation = new Customer();
         
-        customerOperation.addCustomer(staff, "newRhett", "000000", 2);
+        customerOperation.addCustomer(staff, customer, "newRhett", "000000", 2);
         customerOperation.editCustomer(staff, customer);
         customerOperation.removeCustomer(staff, customer);
         

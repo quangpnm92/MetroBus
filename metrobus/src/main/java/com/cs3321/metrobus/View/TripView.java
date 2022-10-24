@@ -24,6 +24,5 @@ public class TripView{
         TripView view = new TripView();
         
         view.TripList(n);
-        
     }    
 }

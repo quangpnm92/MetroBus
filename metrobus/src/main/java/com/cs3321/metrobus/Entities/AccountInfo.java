@@ -52,5 +52,9 @@ public class AccountInfo {
      this.role = role;
  }
  
+ public AccountInfo() {
+     
+ }
+ 
 }
 

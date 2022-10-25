@@ -13,7 +13,7 @@ package com.cs3321.metrobus.Entities;
 public class AccountInfo {
   private String username; 
   private String password; // private = restricted access
-  private int role;
+  private String role;
   private int tickets[][];
   
   public String getUsername() {
@@ -31,10 +31,10 @@ public class AccountInfo {
     this.password = password;
   }
   
-  public int getRole() {
+  public String getRole() {
     return role;
   }
-  public void setRole(int role) {
+  public void setRole(String role) {
     this.role = role;
   }
   
@@ -46,7 +46,7 @@ public class AccountInfo {
   }
     
   
- public AccountInfo(String user, String pass, int role){
+ public AccountInfo(String user, String pass, String role){
      this.username = user;
      this.password = pass;
      this.role = role;

@@ -13,7 +13,7 @@ public class Login {
     public ArrayList<AccountInfo> readCSV() {
 
         try ( Scanner sc = new Scanner(new File("C:\\Users\\thail\\Documents\\UHD\\Fall 2022\\CS 3321\\Project\\MetroBus\\metrobus\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\login.csv"))) {
-            //sc.useDelimiter(",");
+       
             sc.useDelimiter("\n");
             while (sc.hasNextLine()) {
                 AccountInfo account = new AccountInfo();
@@ -34,7 +34,7 @@ public class Login {
         ArrayList<AccountInfo> list_acc = readCSV();
         
         for (int i = 0; i <= list_acc.size(); i++){
-            if ((username==list_acc.get(i).getUsername())&&(password==list_acc.get(i).getPassword()))
+            if ((username.equals(list_acc.get(i).getUsername()))&&(password.equals(list_acc.get(i).getPassword())))
             
                 return true;
         }

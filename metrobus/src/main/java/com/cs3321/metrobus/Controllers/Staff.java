@@ -14,10 +14,10 @@ public class Staff {
     Scanner myScan = new Scanner(System.in);
     
     public boolean checkRole(AccountInfo account) {
-        return account.getRole() == 0;
+        return account.getRole() == "0";
     }
     
-    public void addStaff(AccountInfo adminAccount, AccountInfo staffAccount, String userInput, String passInput, int roleinput) {
+    public void addStaff(AccountInfo adminAccount, AccountInfo staffAccount, String userInput, String passInput, String roleinput) {
         if(checkRole(adminAccount)) {
             staffAccount.setUsername(userInput);
             staffAccount.setPassword(passInput);
@@ -96,12 +96,12 @@ public class Staff {
     }
     
     public static void main(String[] args) {
-        AccountInfo admin = new AccountInfo("rhett", "123456", 0);
-        AccountInfo staff = new AccountInfo("staffRhett", "000000", 1);
+        AccountInfo admin = new AccountInfo("rhett", "123456", "0");
+        AccountInfo staff = new AccountInfo("staffRhett", "000000", "1");
         AccountInfo newStaff = new AccountInfo();
         Staff staffOperation = new Staff();
         
-        staffOperation.addStaff(admin, newStaff, "staffRhett2", "010203", 1);
+        staffOperation.addStaff(admin, newStaff, "staffRhett2", "010203", "1");
         staffOperation.editStaff(admin, staff);
         staffOperation.removeStaff(admin, newStaff);
         

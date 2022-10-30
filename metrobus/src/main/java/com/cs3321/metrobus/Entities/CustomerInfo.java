@@ -10,7 +10,7 @@ package com.cs3321.metrobus.Entities;
  */
 
 // role 0 = admin, role 1 = staff, role 2 = customer
-public class AccountInfo {
+public class CustomerInfo {
   private String username; 
   private String password; // private = restricted access
   private String role;
@@ -46,13 +46,13 @@ public class AccountInfo {
   }
     
   
- public AccountInfo(String user, String pass, String role){
+ public CustomerInfo(String user, String pass, String role){
      this.username = user;
      this.password = pass;
      this.role = role;
  }
  
- public AccountInfo() {
+ public CustomerInfo() {
      
  }
  

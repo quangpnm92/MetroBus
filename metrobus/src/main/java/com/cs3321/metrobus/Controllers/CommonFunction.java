@@ -83,11 +83,11 @@ public class CommonFunction {
                 String[] values = sc.next().split(",");
 
                 if (values[0].trim() == "2") {
-                    String departure = values[3].trim();
-                    String arrival = values[4].trim();
-                    int taken = Integer.parseInt(values[5].trim());
-                    int available = Integer.parseInt(values[5].trim());
-                    Double price = Double.parseDouble(values[5].trim());
+                    String departure = values[0].trim();
+                    String arrival = values[1].trim();
+                    int taken = Integer.parseInt(values[2].trim());
+                    int available = Integer.parseInt(values[3].trim());
+                    Double price = Double.parseDouble(values[4].trim());
                     TripInfo trip = new TripInfo(departure, arrival, available, taken, price);
                     trips.add(trip);
                 }

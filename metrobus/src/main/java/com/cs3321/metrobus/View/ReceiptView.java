@@ -3,10 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.cs3321.metrobus.View;
-
 import com.cs3321.metrobus.Controllers.*;
 import com.cs3321.metrobus.Entities.*;
-
 import org.apache.commons.lang3.StringUtils;
 import java.util.Date;
 

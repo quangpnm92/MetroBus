@@ -18,7 +18,7 @@ public class TripInfo {
     private int available;
     private int taken;
     private Date departureDate;
-    private int price;
+    private double price;
 
     public String getTripID() {
         return tripID;
@@ -76,26 +76,27 @@ public class TripInfo {
         this.departureDate = departureDate;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
     public void setPrice(int price) {
         this.price = price;
     }
-    
-    public TripInfo(String departure, String arrival, int howManySeats, int year, int month, int day, int hrs, int min) {
-        this.departureCity = departure;
-        this.arrivalCity = arrival;
-        this.seats = howManySeats;
-        this.departureDate = new Date(year, month, day, hrs, min);
-        
+
+    public TripInfo(String departureCity, String arrivalCity, int available, int taken, double price) {
+        this.tripID = "N/A";
+        this.departureCity = departureCity;
+        this.arrivalCity = arrivalCity;
+        this.available = available;
+        this.taken = taken;
+        this.price = price;
     }
     
+
     public static void main(String[] args) {
-        TripInfo x = new TripInfo("Houston", "Dallas", 50, 2022, 10, 22, 20, 45);
+//        TripInfo x = new TripInfo("Houston", "Dallas", 50, 2022, 10, 22, 20, 45);
         
-       
     }
     
     

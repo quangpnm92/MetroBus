@@ -1,21 +1,21 @@
 package com.cs3321.metrobus.Controllers;
 
 import com.cs3321.metrobus.Entities.*;
+import com.cs3321.metrobus.Controllers.CommonFunction;
 import java.io.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class Login {
 
-    String path = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\";
+    
     public static AccountInfo account = new AccountInfo();
     public static PeopleInfo people = new PeopleInfo();
     public static PaymentInfo payment = new PaymentInfo();
 
     public boolean checkLogin(String username, String password) {
 
-        try ( Scanner sc = new Scanner(new File(path + "login.csv"))) {
+        try ( Scanner sc = new Scanner(new File(CommonFunction.path + "login.csv"))) {
 
             sc.useDelimiter("\n");
 

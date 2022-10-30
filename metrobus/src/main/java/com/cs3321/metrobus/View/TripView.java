@@ -42,6 +42,9 @@ public class TripView{
 public class TripView{
 
     public static void main(String[] args) {
+        
+        
+        
         String line = new String(new char[77]).replace('\0', '-');
         
         String departureCity;

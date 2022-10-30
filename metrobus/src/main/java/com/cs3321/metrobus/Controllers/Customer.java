@@ -4,7 +4,7 @@
  */
 package com.cs3321.metrobus.Controllers;
 
-import com.cs3321.metrobus.Entities.CustomerInfo;
+import com.cs3321.metrobus.Entities.AccountInfo;
 import java.util.Scanner;
 
 /**
@@ -15,11 +15,11 @@ import java.util.Scanner;
 public class Customer {
     Scanner myScan = new Scanner(System.in);
     
-    public boolean checkRole(CustomerInfo account) {
+    public boolean checkRole(AccountInfo account) {
         return account.getRole() == "1";
     }
 
-    public void addCustomer(CustomerInfo staffAccount, CustomerInfo custAccount, String userInput, String passInput, String roleInput) {
+    public void addCustomer(AccountInfo staffAccount, AccountInfo custAccount, String userInput, String passInput, String roleInput) {
         //AccountInfo(user, pass, role);
         if (checkRole(staffAccount)) {
             custAccount.setUsername(userInput);
@@ -32,7 +32,7 @@ public class Customer {
         }    
     }
     
-    public void removeCustomer(CustomerInfo staffAccount, CustomerInfo customerAccount) {
+    public void removeCustomer(AccountInfo staffAccount, AccountInfo customerAccount) {
         String choice = "";
         if (checkRole(staffAccount)) {
             System.out.print("Confirm deletion of profile, " + customerAccount.getUsername() + "(Y/N): ");
@@ -47,7 +47,7 @@ public class Customer {
         }
     }
     
-    public void editCustomer(CustomerInfo staffAccount, CustomerInfo customerAccount) {
+    public void editCustomer(AccountInfo staffAccount, AccountInfo customerAccount) {
         
         String toEdit;
         String temp;
@@ -95,8 +95,8 @@ public class Customer {
     }
     
     public static void main(String[] args) {
-        CustomerInfo staff = new CustomerInfo("rhett", "123456", "1");
-        CustomerInfo customer = new CustomerInfo("cusRhett", "000000","2");
+        AccountInfo staff = new AccountInfo("rhett", "123456", "1");
+        AccountInfo customer = new AccountInfo("cusRhett", "000000","2");
         Customer customerOperation = new Customer();
         
         customerOperation.addCustomer(staff, customer, "newRhett", "000000", "2");

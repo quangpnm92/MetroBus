@@ -4,6 +4,7 @@
  */
 package com.cs3321.metrobus.View;
 import com.cs3321.metrobus.Entities.TripInfo;
+import java.util.ArrayList;
 import org.apache.commons.lang3.StringUtils;
 // Comment for trial - Rhett Oct 2022
 /**
@@ -41,9 +42,7 @@ public class TripView{
 
 public class TripView{
 
-    public static void main(String[] args) {
-        
-        
+    public static void displayTripTable(ArrayList<TripInfo> trips) {
         
         String line = new String(new char[77]).replace('\0', '-');
         
@@ -52,6 +51,7 @@ public class TripView{
         int availableSeats;
         int totalSeats;
         double price;
+        int numTrips= trips.size()-1;
         
 
         
@@ -68,13 +68,14 @@ public class TripView{
         System.out.println(line);
         
         
-        //needs to be in a for or while loop for AllTrips data structure{
+        for(int i=0;i<numTrips;i++){
         
-            departureCity="Houston";
-            arrivalCity="Dallas";
-            availableSeats=30;
-            totalSeats=50;
-            price=100;
+            departureCity= trips.get(i).getDepartureCity();
+            arrivalCity= trips.get(i).getArrivalCity();
+            availableSeats= trips.get(i).getAvailable();
+            totalSeats= trips.get(i).getSeats();
+            price= trips.get(i).getPrice();
+        
         
         System.out.printf("|%s|%s|%s|%s|%n",
                 StringUtils.center(departureCity, 18),
@@ -83,7 +84,7 @@ public class TripView{
                 StringUtils.center("$"+String.format("%,.2f", price), 18));
 
 
-    //} end of loop
+        }
     
     
         System.out.println(line);

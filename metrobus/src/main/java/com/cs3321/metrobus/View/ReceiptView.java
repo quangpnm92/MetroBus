@@ -18,6 +18,7 @@ public class ReceiptView {
         
         //delete the following once we pass parameters
         String customerName=payment.getName();
+
         String departureCity="Houston";
         String arrivalCity="Dallas";
         //**********************

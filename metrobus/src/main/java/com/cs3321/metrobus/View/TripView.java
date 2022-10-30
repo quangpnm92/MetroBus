@@ -18,20 +18,20 @@ import org.apache.commons.lang3.StringUtils;
 
 public class TripView{
 
-    public void TripList(TripInfo trip)
-    {
-        System.out.println("Welcome to trip: " + trip.getDepartureCity());
-        System.out.println("Remaining seats: " + trip.getTaken() + "/" + trip.getAvailable() );
-        System.out.println("");
-    }
-    
-    public static void main(String[] args) {
-        TripInfo n = new TripInfo("Houston", "Dallas", 50, 2022, 10, 22, 20, 45);
-        
-        TripView view = new TripView();
-        
-        view.TripList(n);
-    }    
+//    public void TripList(TripInfo trip)
+//    {
+//        System.out.println("Welcome to trip: " + trip.getNameTrip());
+//        System.out.println("Remaining seats: " + trip.getTaken() + "/" + trip.getAvailable() );
+//        System.out.println("");
+//    }
+//    
+//    public static void main(String[] args) {
+//        TripInfo n = new TripInfo("Houston", 40);
+//        
+//        TripView view = new TripView();
+//        
+//        view.TripList(n);
+//    }    
 }
 
 */

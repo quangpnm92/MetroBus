@@ -3,20 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.cs3321.metrobus.View;
-import com.cs3321.metrobus.Controllers.Payment;
+import com.cs3321.metrobus.Controllers.*;
+import com.cs3321.metrobus.Entities.*;
 import org.apache.commons.lang3.StringUtils;
 import java.util.Date;
 
 
 public class ReceiptView {
 
-    public static void printReceipt(/*String customerName, String departureCity, String arrivalCity, double price*/){
+    public static void printReceipt(PaymentInfo payment,double price){
+        CommonFunction.clearConsole();
         String line = new String(new char[48]).replace('\0', '-');
         Date date = new Date();
         
         //delete the following once we pass parameters
-        double price=20;
-        String customerName="Kate Shimek";
+        String customerName=payment.getName();
         String departureCity="Houston";
         String arrivalCity="Dallas";
         //**********************

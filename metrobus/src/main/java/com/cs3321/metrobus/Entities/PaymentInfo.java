@@ -28,6 +28,9 @@ public class PaymentInfo {
         return money;
     }
 
+    public PaymentInfo() {
+    }
+
     public void setMoney(double money) {
         this.money = money;
     }
@@ -54,6 +57,14 @@ public class PaymentInfo {
         this.expireDate = expireDate;
         this.cvc = cvc;
         this.money = money;
+    }
+    
+    public PaymentInfo(PaymentInfo pay) {
+        this.cardNumber = pay.cardNumber;
+        this.name = pay.name;
+        this.expireDate = pay.expireDate;
+        this.cvc = pay.cvc;
+        this.money = pay.money;
     }
     
 }

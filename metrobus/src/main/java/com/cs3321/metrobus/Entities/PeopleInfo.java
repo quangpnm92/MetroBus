@@ -25,6 +25,18 @@ public class PeopleInfo {
         this.gender = gender;
     }
 
+    public PeopleInfo(String name, String gender, String cardNumber) {
+        this.name = name;
+        this.gender = gender;
+        this.cardNumber = cardNumber;
+    }
+
+    public PeopleInfo() {
+         this.name = "N/A";
+        this.gender = "N/A";
+        this.cardNumber = "N/A";
+    }
+
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }

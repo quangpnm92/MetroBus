@@ -4,11 +4,16 @@
  */
 package com.cs3321.metrobus.Controllers;
 
+import com.cs3321.metrobus.Entities.TripInfo;
+
+
 /**
- *
+ * 
  * @author Quan
  */
 public class Trip {
     
-
+    public void addTrip(TripInfo current) {
+        
+    }
 }

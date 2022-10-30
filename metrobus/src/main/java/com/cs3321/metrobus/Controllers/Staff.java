@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.cs3321.metrobus.Controllers;
-import com.cs3321.metrobus.Entities.CustomerInfo;
+import com.cs3321.metrobus.Entities.AccountInfo;
 import java.util.Scanner;
 
 /**
@@ -13,11 +13,11 @@ import java.util.Scanner;
 public class Staff {
     Scanner myScan = new Scanner(System.in);
     
-    public boolean checkRole(CustomerInfo account) {
+    public boolean checkRole(AccountInfo account) {
         return account.getRole() == "0";
     }
     
-    public void addStaff(CustomerInfo adminAccount, CustomerInfo staffAccount, String userInput, String passInput, String roleinput) {
+    public void addStaff(AccountInfo adminAccount, AccountInfo staffAccount, String userInput, String passInput, String roleinput) {
         if(checkRole(adminAccount)) {
             staffAccount.setUsername(userInput);
             staffAccount.setPassword(passInput);
@@ -29,7 +29,7 @@ public class Staff {
         }
     }
     
-    public void removeStaff(CustomerInfo adminAccount, CustomerInfo staffAccount) {
+    public void removeStaff(AccountInfo adminAccount, AccountInfo staffAccount) {
         String choice = "";
         if (checkRole(adminAccount)) {
             System.out.print("Confirm deletion of profile, " + staffAccount.getUsername() + "(Y/N): ");
@@ -44,7 +44,7 @@ public class Staff {
         }
     }
     
-    public void editStaff(CustomerInfo adminAccount, CustomerInfo staffAccount) {
+    public void editStaff(AccountInfo adminAccount, AccountInfo staffAccount) {
         String toEdit;
         String temp;
         String temp2;
@@ -96,9 +96,9 @@ public class Staff {
     }
     
     public static void main(String[] args) {
-        CustomerInfo admin = new CustomerInfo("rhett", "123456", "0");
-        CustomerInfo staff = new CustomerInfo("staffRhett", "000000", "1");
-        CustomerInfo newStaff = new CustomerInfo();
+        AccountInfo admin = new AccountInfo("rhett", "123456", "0");
+        AccountInfo staff = new AccountInfo("staffRhett", "000000", "1");
+        AccountInfo newStaff = new AccountInfo();
         Staff staffOperation = new Staff();
         
         staffOperation.addStaff(admin, newStaff, "staffRhett2", "010203", "1");

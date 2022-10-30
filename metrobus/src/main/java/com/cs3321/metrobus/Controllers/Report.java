@@ -4,10 +4,14 @@
  */
 package com.cs3321.metrobus.Controllers;
 
+
+
 /**
- *
+ * traveler, destination, seats
+ * customer class, staff class
+ * /trip info class
  * @author rhett
  */
 public class Report {
-    
+
 }

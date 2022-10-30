@@ -19,26 +19,21 @@ public class Payment {
     public boolean processPayment(PaymentInfo payment, double price) {
         if (checkCard(payment, price)) {
             payment.setMoney(payment.getMoney() - price);
-            ReceiptView.printReceipt(price);
+            ReceiptView.printReceipt(payment,price);
             return true;
         }
         return false;
     }
 
     public boolean checkCard(PaymentInfo payment, double price) {
-        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+
         Date today = new Date();
 
-        Date date_exp = null;
-        try {
-            date_exp = df.parse(payment.getExpireDate());
-        } catch (Exception ex) {
-
-        }
+        Date date_exp = CommonFunction.convertStringToDate(payment.getExpireDate());
 
         int a = today.compareTo(date_exp);
 
-        if (payment.getCardNumber().length() != 16 || payment.getCardNumber().isBlank() || !CommonFunction.isNumeric(payment.getCardNumber())) {
+        if (payment.getCardNumber().length() != 19 || payment.getCardNumber().isBlank() || CommonFunction.isNumeric(payment.getCardNumber())) {
             return false;
         }
 
@@ -54,7 +49,7 @@ public class Payment {
             return false;
         }
 
-        if (payment.getExpireDate().length() <= 3 || payment.getExpireDate().isBlank() || today.compareTo(date_exp) != 1) {
+        if (payment.getExpireDate().length() <= 3 || payment.getExpireDate().isBlank() || today.compareTo(date_exp) != -1) {
             return false;
         }
 
@@ -62,8 +57,8 @@ public class Payment {
     }
 
     public static void main(String[] args) {
-        Payment a = new Payment();
-        PaymentInfo payment = new PaymentInfo("4567898751212548", "Quang", "01-01-2023", "456", 30000);
-        a.processPayment(payment, 20000);
+//        Payment a = new Payment();
+//        PaymentInfo payment = new PaymentInfo("4567898751212548", "Quang", "01-01-2023", "456", 30000);
+//        a.processPayment(payment, 20000);
     }
 }

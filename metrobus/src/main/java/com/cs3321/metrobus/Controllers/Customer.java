@@ -16,10 +16,10 @@ public class Customer {
     Scanner myScan = new Scanner(System.in);
     
     public boolean checkRole(AccountInfo account) {
-        return account.getRole() == 1;
+        return account.getRole() == "1";
     }
 
-    public void addCustomer(AccountInfo staffAccount, AccountInfo custAccount, String userInput, String passInput, int roleInput) {
+    public void addCustomer(AccountInfo staffAccount, AccountInfo custAccount, String userInput, String passInput, String roleInput) {
         //AccountInfo(user, pass, role);
         if (checkRole(staffAccount)) {
             custAccount.setUsername(userInput);
@@ -95,11 +95,11 @@ public class Customer {
     }
     
     public static void main(String[] args) {
-        AccountInfo staff = new AccountInfo("rhett", "123456", 1);
-        AccountInfo customer = new AccountInfo("cusRhett", "000000",2);
+        AccountInfo staff = new AccountInfo("rhett", "123456", "1");
+        AccountInfo customer = new AccountInfo("cusRhett", "000000","2");
         Customer customerOperation = new Customer();
         
-        customerOperation.addCustomer(staff, customer, "newRhett", "000000", 2);
+        customerOperation.addCustomer(staff, customer, "newRhett", "000000", "2");
         customerOperation.editCustomer(staff, customer);
         customerOperation.removeCustomer(staff, customer);
         

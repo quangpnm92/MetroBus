@@ -10,10 +10,10 @@ import java.util.Scanner;
  *
  * @author huyph
  */
-public class Menu {
+public class MenuView {
  boolean exit;
   public static void main(String[] args) {
-        Menu menu = new Menu();
+        MenuView menu = new MenuView();
         menu.runMenu();
         menu.runMenu1();
     }

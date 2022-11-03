@@ -1,7 +1,7 @@
 
 package com.cs3321.metrobus.Entities;
 
-public class PaymentInfo {
+public class PaymentInfo extends AccountInfo {
     private String cardNumber;
     private String name;
     private String expireDate;
@@ -51,7 +51,8 @@ public class PaymentInfo {
         this.cvc = cvc;
     }
 
-    public PaymentInfo(String cardNumber, String name, String expireDate, String cvc, double money) {
+    public PaymentInfo(String cardNumber, String name, String expireDate, String cvc, double money, String username, String password, String role) {
+        super(username, password, role);
         this.cardNumber = cardNumber;
         this.name = name;
         this.expireDate = expireDate;
@@ -60,6 +61,7 @@ public class PaymentInfo {
     }
     
     public PaymentInfo(PaymentInfo pay) {
+        super(pay.getUsername(), pay.getPassword(), pay.getRole());
         this.cardNumber = pay.cardNumber;
         this.name = pay.name;
         this.expireDate = pay.expireDate;

@@ -8,7 +8,7 @@ package com.cs3321.metrobus.Entities;
  *
  * @author Quan
  */
-public class PeopleInfo {
+public class PeopleInfo extends AccountInfo {
     private String name;
     private String gender;
     private String cardNumber;
@@ -32,7 +32,7 @@ public class PeopleInfo {
     }
 
     public PeopleInfo() {
-         this.name = "N/A";
+        this.name = "N/A";
         this.gender = "N/A";
         this.cardNumber = "N/A";
     }

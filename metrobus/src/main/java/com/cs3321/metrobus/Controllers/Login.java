@@ -31,11 +31,10 @@ public class Login {
                     String card = values[5].trim();
                     String exp_date = values[6].trim();
                     String cvc = values[7].trim();
-                    Double money = Double.parseDouble(values[8].trim());
+                    Double money = Double.valueOf(values[8].trim());
 
-                    account = new AccountInfo(user_name, pass, role);
                     people = new PeopleInfo(name, gender, card);
-                    payment = new PaymentInfo(card, name, exp_date, cvc, money);
+                    payment = new PaymentInfo(card, name, exp_date, cvc, money,user_name, pass, role);
 
                     return true;
                 }

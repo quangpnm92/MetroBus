@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.cs3321.metrobus.View;
+import com.cs3321.metrobus.Controllers.Customer;
 import com.cs3321.metrobus.Entities.PeopleInfo;
 import java.util.ArrayList;
 import org.apache.commons.lang3.StringUtils;
@@ -12,9 +13,10 @@ import org.apache.commons.lang3.StringUtils;
  */
 
 
-public class CustomerView {
+public class CustomerView extends Customer {
 
-    public static void displayCustomerTable(ArrayList<PeopleInfo> customers) {
+    @Override
+    public void displayCustomerTable(ArrayList<PeopleInfo> customers) {
         String line = new String(new char[39]).replace('\0', '-');
         
         String name;

@@ -2,7 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package javaapplication3;
+package com.cs3321.metrobus.View;
+import com.cs3321.metrobus.Controllers.Login;
 import java.util.Scanner;
 
 /**
@@ -13,6 +14,8 @@ public class LoginView {
 
     
     public static void main(String[] args) {
+        Login lg = new Login();
+        MenuView menu = new MenuView();
         
         System.out.printf(" --------------------------------%n");
         System.out.printf("          Login info      %n");
@@ -24,9 +27,9 @@ public class LoginView {
         username = s.nextLine();
         System.out.print("   Password:");//password:user
         password = s.nextLine();
-        if(username.equals("user") && password.equals("user"))
+        if(lg.checkLogin(username, password))
         {
-            System.out.println("   Authentication Successful");
+            menu.runMenu();
         }
         else
         {

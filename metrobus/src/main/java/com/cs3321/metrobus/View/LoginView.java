@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package com.cs3321.metrobus.View;
+import com.cs3321.metrobus.Controllers.CommonFunction;
 import com.cs3321.metrobus.Controllers.Login;
+import com.cs3321.metrobus.Entities.PaymentInfo;
 import java.util.Scanner;
 
 /**
@@ -29,7 +31,13 @@ public class LoginView {
         password = s.nextLine();
         if(lg.checkLogin(username, password))
         {
-            menu.runMenu();
+            PaymentInfo payment = lg.extractInfo(username, password);
+            if (payment.getRole().equals(CommonFunction.admin))
+                menu.runMenuAdmin();
+            else if (payment.getRole().equals(CommonFunction.staff))
+                menu.runMenuStaff();
+            else if (payment.getRole().equals(CommonFunction.customer))
+                menu.runMenuUser();
         }
         else
         {

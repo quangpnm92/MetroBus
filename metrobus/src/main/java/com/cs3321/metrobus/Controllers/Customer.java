@@ -14,15 +14,17 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author rhett Oct 23, 2022
  */
-public class Customer {
+public class Customer implements Account{
 
     Scanner myScan = new Scanner(System.in);
 
+    @Override
     public boolean checkRole(AccountInfo account) {
         return account.getRole() == "1";
     }
 
-    public void addCustomer(AccountInfo staffAccount, AccountInfo custAccount, String userInput, String passInput, String roleInput) {
+    @Override
+    public void add(AccountInfo staffAccount, AccountInfo custAccount, String userInput, String passInput, String roleInput) {
         //AccountInfo(user, pass, role);
         if (checkRole(staffAccount)) {
             custAccount.setUsername(userInput);
@@ -34,7 +36,8 @@ public class Customer {
         }
     }
 
-    public void removeCustomer(AccountInfo staffAccount, AccountInfo customerAccount) {
+    @Override
+    public void remove(AccountInfo staffAccount, AccountInfo customerAccount) {
         String choice = "";
         if (checkRole(staffAccount)) {
             System.out.print("Confirm deletion of profile, " + customerAccount.getUsername() + "(Y/N): ");
@@ -47,8 +50,8 @@ public class Customer {
             System.out.println("You do not have staff level access.");
         }
     }
-
-    public void editCustomer(AccountInfo staffAccount, AccountInfo customerAccount) {
+    @Override
+    public void edit(AccountInfo staffAccount, AccountInfo customerAccount) {
 
         String toEdit;
         String temp;
@@ -93,16 +96,17 @@ public class Customer {
         }
     }
 
-    public void displayCustomerTable(ArrayList<PeopleInfo> customers){};
+    @Override
+    public void displayTable(){};
 
     public static void main(String[] args) {
         AccountInfo staff = new AccountInfo("rhett", "123456", "1");
         AccountInfo customer = new AccountInfo("cusRhett", "000000", "2");
         Customer customerOperation = new Customer();
 
-        customerOperation.addCustomer(staff, customer, "newRhett", "000000", "2");
-        customerOperation.editCustomer(staff, customer);
-        customerOperation.removeCustomer(staff, customer);
+//        customerOperation.addCustomer(staff, customer, "newRhett", "000000", "2");
+//        customerOperation.editCustomer(staff, customer);
+//        customerOperation.removeCustomer(staff, customer);
 
     }
 }

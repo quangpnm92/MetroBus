@@ -4,6 +4,7 @@
  */
 package com.cs3321.metrobus.Controllers;
 
+import com.cs3321.metrobus.Entities.PaymentInfo;
 import com.cs3321.metrobus.Entities.PeopleInfo;
 import com.cs3321.metrobus.Entities.TripInfo;
 import java.io.File;
@@ -20,6 +21,9 @@ import java.util.Scanner;
 public class CommonFunction {
 
     static public String path = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\";
+    static public String admin = "0";
+    static public String staff = "1";
+    static public String customer = "2";
 
     static public boolean isNumeric(String str) {
         try {
@@ -48,8 +52,8 @@ public class CommonFunction {
         return date;
     }
 
-    static ArrayList<PeopleInfo> readCSV_Customer(String str) {
-        ArrayList<PeopleInfo> customers = new ArrayList<PeopleInfo>();
+    static public ArrayList<PeopleInfo> readCSV(String choice) {
+        ArrayList<PeopleInfo> peoples = new ArrayList<PeopleInfo>();
 
         try ( Scanner sc = new Scanner(new File(CommonFunction.path + "login.csv"))) {
 
@@ -58,20 +62,21 @@ public class CommonFunction {
             while (sc.hasNextLine()) {
                 String[] values = sc.next().split(",");
 
-                if (values[0].trim() == "2") {
+                if (choice.equals(values[2].trim())) {
                     String name = values[3].trim();
                     String gender = values[4].trim();
                     String card = values[5].trim();
-                    PeopleInfo customer = new PeopleInfo(name, gender, card);
-                    customers.add(customer);
+                    
+                    PeopleInfo people = new PeopleInfo(name,gender,card);
+                    peoples.add(people);
                 }
             }
         } catch (FileNotFoundException ex) {
             ;
         }
-        return customers;
+        return peoples;
     }
-    
+
     static ArrayList<TripInfo> readCSV_TripInfo(String str) {
         ArrayList<TripInfo> trips = new ArrayList<TripInfo>();
 

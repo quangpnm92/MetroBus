@@ -4,20 +4,24 @@
  */
 package com.cs3321.metrobus.Controllers;
 import com.cs3321.metrobus.Entities.AccountInfo;
+import com.cs3321.metrobus.Entities.PeopleInfo;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  *
  * @author rhett Oct 23, 2022
  */
-public class Staff {
+public class Staff implements Account {
     Scanner myScan = new Scanner(System.in);
     
+    @Override
     public boolean checkRole(AccountInfo account) {
         return account.getRole() == "0";
     }
     
-    public void addStaff(AccountInfo adminAccount, AccountInfo staffAccount, String userInput, String passInput, String roleinput) {
+    @Override
+    public void add(AccountInfo adminAccount, AccountInfo staffAccount, String userInput, String passInput, String roleinput) {
         if(checkRole(adminAccount)) {
             staffAccount.setUsername(userInput);
             staffAccount.setPassword(passInput);
@@ -29,7 +33,8 @@ public class Staff {
         }
     }
     
-    public void removeStaff(AccountInfo adminAccount, AccountInfo staffAccount) {
+    @Override
+    public void remove(AccountInfo adminAccount, AccountInfo staffAccount) {
         String choice = "";
         if (checkRole(adminAccount)) {
             System.out.print("Confirm deletion of profile, " + staffAccount.getUsername() + "(Y/N): ");
@@ -44,7 +49,8 @@ public class Staff {
         }
     }
     
-    public void editStaff(AccountInfo adminAccount, AccountInfo staffAccount) {
+    @Override
+    public void edit(AccountInfo adminAccount, AccountInfo staffAccount) {
         String toEdit;
         String temp;
         String temp2;
@@ -95,15 +101,18 @@ public class Staff {
         }
     }
     
+    @Override
+    public void displayTable(){};
+    
     public static void main(String[] args) {
         AccountInfo admin = new AccountInfo("rhett", "123456", "0");
         AccountInfo staff = new AccountInfo("staffRhett", "000000", "1");
         AccountInfo newStaff = new AccountInfo();
         Staff staffOperation = new Staff();
         
-        staffOperation.addStaff(admin, newStaff, "staffRhett2", "010203", "1");
-        staffOperation.editStaff(admin, staff);
-        staffOperation.removeStaff(admin, newStaff);
-        
+//        staffOperation.addStaff(admin, newStaff, "staffRhett2", "010203", "1");
+//        staffOperation.editStaff(admin, staff);
+//        staffOperation.removeStaff(admin, newStaff);
+//        
     }
 }

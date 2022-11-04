@@ -4,7 +4,7 @@
  */
 package com.cs3321.metrobus.View;
 import com.cs3321.metrobus.Controllers.CommonFunction;
-import com.cs3321.metrobus.Controllers.Customer;
+import com.cs3321.metrobus.Controllers.Staff;
 import com.cs3321.metrobus.Entities.PeopleInfo;
 import java.util.ArrayList;
 import org.apache.commons.lang3.StringUtils;
@@ -14,24 +14,20 @@ import org.apache.commons.lang3.StringUtils;
  */
 
 
-public class CustomerView extends Customer {
+public class StaffView extends Staff {
 
+    
     @Override
     public void displayTable() {
-        ArrayList<PeopleInfo> customers = CommonFunction.readCSV(CommonFunction.customer);
-        
+        ArrayList<PeopleInfo> staff = CommonFunction.readCSV(CommonFunction.staff);
         String line = new String(new char[39]).replace('\0', '-');
         
         String name;
-        //String username;
         String gender;
-        int numCustomers= customers.size()-1;
-        
-
         
         System.out.println(line);
         System.out.printf("|%s|%n",
-                StringUtils.center("All Customers", 38));
+                StringUtils.center("All Staffs", 38));
         System.out.println(line);
         
         System.out.printf("|%s|%s|%n",
@@ -42,10 +38,10 @@ public class CustomerView extends Customer {
         
         
        
-        for(int i=0;i<numCustomers;i++){
+        for(int i=0;i<staff.size();i++){
         
-            name= customers.get(i).getName();
-            gender= customers.get(i).getGender();
+            name= staff.get(i).getName();
+            gender= staff.get(i).getGender();
             
         
         System.out.printf("|%s|%s|%n",

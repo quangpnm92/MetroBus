@@ -5,17 +5,21 @@
 package com.cs3321.metrobus.Controllers;
 
 import com.cs3321.metrobus.Entities.PaymentInfo;
+import com.cs3321.metrobus.Entities.TripInfo;
 import com.cs3321.metrobus.View.ReceiptView;
+import java.io.File;
+import java.io.FileNotFoundException;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
  * @author Quan
  */
 public class Payment {
-
+    public PaymentInfo payment = new PaymentInfo();
+    
     public boolean processPayment(PaymentInfo payment, double price) {
         if (checkCard(payment, price)) {
             payment.setMoney(payment.getMoney() - price);
@@ -25,7 +29,7 @@ public class Payment {
         return false;
     }
 
-    public boolean checkCard(PaymentInfo payment, double price) {
+    private boolean checkCard(PaymentInfo payment, double price) {
 
         Date today = new Date();
 
@@ -60,5 +64,40 @@ public class Payment {
 //        Payment a = new Payment();
 //        PaymentInfo payment = new PaymentInfo("4567898751212548", "Quang", "01-01-2023", "456", 30000);
 //        a.processPayment(payment, 20000);
+    }
+    public void makePayment(TripInfo trip) // -ghe
+    {   
+        
+    }
+    
+    public PaymentInfo extractInfo(String username, String password) {
+
+        try ( Scanner sc = new Scanner(new File(CommonFunction.path + "login.csv"))) {
+            sc.useDelimiter("\n");
+
+            while (sc.hasNextLine()) {
+                String[] values = sc.next().split(",");
+
+                if ((username.equals(values[0].trim()) && (password.equals(values[1].trim())))) {
+                    String user_name = values[0].trim();
+                    String pass = values[1].trim();
+                    String role = values[2].trim();
+                    String name = values[3].trim();
+                    String card = values[5].trim();
+                    String exp_date = values[6].trim();
+                    String cvc = values[7].trim();
+                    Double money = Double.valueOf(values[8].trim());
+
+                    payment = new PaymentInfo(card, name, exp_date, cvc, money, user_name, pass, role);
+
+                    return payment;
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            ;
+        }
+
+        return payment;
+
     }
 }

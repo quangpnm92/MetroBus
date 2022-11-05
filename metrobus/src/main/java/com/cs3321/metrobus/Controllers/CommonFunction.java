@@ -24,7 +24,7 @@ public class CommonFunction {
     static public String admin = "0";
     static public String staff = "1";
     static public String customer = "2";
-
+    
     static public boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
@@ -66,8 +66,8 @@ public class CommonFunction {
                     String name = values[3].trim();
                     String gender = values[4].trim();
                     String card = values[5].trim();
-                    
-                    PeopleInfo people = new PeopleInfo(name,gender,card);
+
+                    PeopleInfo people = new PeopleInfo(name, gender, card);
                     peoples.add(people);
                 }
             }
@@ -77,7 +77,7 @@ public class CommonFunction {
         return peoples;
     }
 
-    static ArrayList<TripInfo> readCSV_TripInfo(String str) {
+    static public ArrayList<TripInfo> readCSV_TripInfo() {
         ArrayList<TripInfo> trips = new ArrayList<TripInfo>();
 
         try ( Scanner sc = new Scanner(new File(CommonFunction.path + "trip.csv"))) {
@@ -86,16 +86,15 @@ public class CommonFunction {
 
             while (sc.hasNextLine()) {
                 String[] values = sc.next().split(",");
+                String id = values[0].trim();
+                String departure = values[1].trim();
+                String arrival = values[2].trim();
+                int taken = Integer.parseInt(values[3].trim());
+                int available = Integer.parseInt(values[4].trim());
+                Double price = Double.parseDouble(values[5].trim());
+                TripInfo trip = new TripInfo(id,departure, arrival, available, taken, price);
+                trips.add(trip);
 
-                if (values[0].trim() == "2") {
-                    String departure = values[0].trim();
-                    String arrival = values[1].trim();
-                    int taken = Integer.parseInt(values[2].trim());
-                    int available = Integer.parseInt(values[3].trim());
-                    Double price = Double.parseDouble(values[4].trim());
-                    TripInfo trip = new TripInfo(departure, arrival, available, taken, price);
-                    trips.add(trip);
-                }
             }
         } catch (FileNotFoundException ex) {
             ;

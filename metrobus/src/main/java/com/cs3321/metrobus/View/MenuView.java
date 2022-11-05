@@ -4,6 +4,7 @@
  */
 package com.cs3321.metrobus.View;
 
+import com.cs3321.metrobus.Controllers.CommonFunction;
 import java.util.Scanner;
 
 /**
@@ -24,7 +25,7 @@ public class MenuView {
         while (!exit) {
             printAdminView();
             int choice = getInput1();
-            performAction(choice);
+            performAdminAction(choice);
         }
     }
 
@@ -33,25 +34,24 @@ public class MenuView {
         while (!exit) {
             printStaffView();
             int choice = getInput1();
-            performAction(choice);
+            performStaffAction(choice);
         }
     }
-    
+
     public void runMenuUser() {
         printHeader();
         while (!exit) {
             printUserView();
             int choice = getInput1();
-            performAction(choice);
+            performUserAction(choice);
         }
     }
-    
+
     private void printHeader() {
         System.out.println("+-----------------------------------+");
         System.out.println("|                Menu               |");
         System.out.println("+-----------------------------------+");
     }
-
 
     private void printAdminView() {
         System.out.println("\nPlease make a selection");
@@ -63,7 +63,7 @@ public class MenuView {
 
     private void printStaffView() {
         System.out.println("\nPlease make a selection");
-        System.out.println("1) View Customer table");
+        System.out.println("1) View Customer info");
         System.out.println("2) Edit trip");
         System.out.println("3) Edit staff");
         System.out.println("0) Exit");
@@ -71,25 +71,9 @@ public class MenuView {
 
     private void printUserView() {
         System.out.println("\nPlease make a selection");
-        System.out.println("1) View staff table");
-        System.out.println("2) Edit Admin info");
+        System.out.println("1) View Trip table");
+        System.out.println("2) Make payment for Trip");
         System.out.println("0) Exit");
-    }
-
-    private int getInput() {
-
-        int choice = -1;
-        while (choice < 0 || choice > 3) {
-            try {
-                // System.out.print("\nEnter your choice: ");
-                // choice= Integer.parseInt(kb.nextLine());
-                choice = 1;
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid selection. Please try again.");
-            }
-
-        }
-        return choice;
     }
 
     private int getInput1() {
@@ -109,61 +93,76 @@ public class MenuView {
         return choice;
     }
 
-    private void performAction(int choice) {
+    private void performAdminAction(int choice) {
 
         switch (choice) {
             case 0 -> {
                 System.out.println("Thank you for using our application.");
                 System.exit(0);
             }
-            case 1 ->  {
-                switch (choice) {
-                    case 0 -> {
-                        System.out.println("Thank you for using our application.");
-                        System.exit(0);
-                }
-                    case 1 ->  {
-                        StaffView staff = new StaffView();
-                        staff.displayTable();
-                    }
-                    case 2 -> System.exit(0);
-                    case 3 -> System.exit(0);
-                    default -> System.out.println("Unknown error has occured.");
-                }
+            case 1 -> {
+                StaffView staff = new StaffView();
+                staff.displayTable();
+            }
+            case 2 -> {
+                System.out.println("Out for 2");
+            }
+
+            case 3 -> {
+                System.out.println("Out for 3");
 
             }
-            case 2 ->  {
-                switch (choice) {
-                    case 0 -> {
-                        System.out.println("Thank you for using our application.");
-                        System.exit(0);
-                }
-                    case 1 ->  {
-                        System.exit(0);
-                    }
-                    case 2 -> System.exit(0);
-                    case 3 -> System.exit(0);
-                    default -> System.out.println("Unknown error has occured.");
-                }
-
-            }
-            case 3 ->  {
-                switch (choice) {
-                    case 0 -> {
-                        System.out.println("Thank you for using our application.");
-                        System.exit(0);
-                }
-                    case 1 ->  {
-                        System.exit(0);
-                    }
-                    case 2 -> System.exit(0);
-                    case 3 -> System.exit(0);
-                    default -> System.out.println("Unknown error has occured.");
-                }
-            }
-            default -> System.out.println("Unknown error has occured.");
+            default ->
+                System.out.println("Unknown error has occured.");
         }
 
     }
 
+    private void performStaffAction(int choice) {
+
+        switch (choice) {
+            case 0 -> {
+                System.out.println("Thank you for using our application.");
+                System.exit(0);
+            }
+            case 1 -> {
+                CustomerView customer = new CustomerView();
+                customer.displayTable();
+            }
+            case 2 -> {
+                System.out.println("Out for 2");
+            }
+
+            case 3 -> {
+                System.out.println("Out for 3");
+
+            }
+            default ->
+                System.out.println("Unknown error has occured.");
+        }
+    }
+
+    private void performUserAction(int choice) {
+
+        switch (choice) {
+            case 0 -> {
+                System.out.println("Thank you for using our application.");
+                System.exit(0);
+            }
+            case 1 -> {
+                TripView trip = new TripView();
+                trip.displayTable();
+            }
+            case 2 -> {
+                System.out.println("Out for 2");
+            }
+
+            case 3 -> {
+                System.out.println("Out for 3");
+
+            }
+            default ->
+                System.out.println("Unknown error has occured.");
+        }
+    }
 }

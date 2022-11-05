@@ -24,11 +24,8 @@ public class CustomerView extends Customer {
         
         String name;
         //String username;
-        String gender;
-        int numCustomers= customers.size()-1;
-        
+        String gender;     
 
-        
         System.out.println(line);
         System.out.printf("|%s|%n",
                 StringUtils.center("All Customers", 38));
@@ -42,7 +39,7 @@ public class CustomerView extends Customer {
         
         
        
-        for(int i=0;i<numCustomers;i++){
+        for(int i=0;i<customers.size();i++){
         
             name= customers.get(i).getName();
             gender= customers.get(i).getGender();

@@ -76,6 +76,9 @@ public class TripInfo {
         this.departureDate = departureDate;
     }
 
+    public TripInfo() {
+    }
+
     public double getPrice() {
         return price;
     }
@@ -84,8 +87,8 @@ public class TripInfo {
         this.price = price;
     }
 
-    public TripInfo(String departureCity, String arrivalCity, int available, int taken, double price) {
-        this.tripID = "N/A";
+    public TripInfo(String id,String departureCity, String arrivalCity, int available, int taken, double price) {
+        this.tripID = id;
         this.departureCity = departureCity;
         this.arrivalCity = arrivalCity;
         this.available = available;

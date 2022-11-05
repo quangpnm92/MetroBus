@@ -5,15 +5,77 @@
 package com.cs3321.metrobus.Controllers;
 
 import com.cs3321.metrobus.Entities.TripInfo;
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
- * 
+ *
  * @author Quan
  */
 public class Trip {
-    
-    public void addTrip(TripInfo current) {
+
+    public TripInfo trip = new TripInfo();
+
+    private boolean checkSeat(String id, int available) {
         
+        
+        if (checkID(id)) {
+            TripInfo trip_extract = extractInfo(id);
+            
+            if (trip_extract.getAvailable() <= available)
+                return true;
+        }
+        return false;
     }
+
+    private boolean checkID(String id) {
+        ArrayList<TripInfo> trips = CommonFunction.readCSV_TripInfo();
+
+        for (int i = 0; i < trips.size(); i++) {
+            if (id.equals(trips.get(i).getTripID())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public TripInfo extractInfo(String id) {
+
+        try ( Scanner sc = new Scanner(new File(CommonFunction.path + "trip.csv"))) {
+            sc.useDelimiter("\n");
+
+            while (sc.hasNextLine()) {
+                String[] values = sc.next().split(",");
+
+                if ((id.equals(values[0].trim()))) {
+                    String departure = values[1].trim();
+                    String arrival = values[2].trim();
+                    int taken = Integer.parseInt(values[3].trim());
+                    int available = Integer.parseInt(values[4].trim());
+                    Double price = Double.parseDouble(values[5].trim());
+
+                    trip = new TripInfo(id, departure, arrival, available, taken, price);
+
+                    return trip;
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            ;
+        }
+
+        return trip;
+    }
+    
+    public void readyPayment(String id, int available)
+    {
+        Payment payment = new Payment();
+        if (checkSeat(id, available))
+        {
+            TripInfo trip_extract = extractInfo(id);
+            payment.makePayment(trip_extract);
+        }
+    }
+            
 }

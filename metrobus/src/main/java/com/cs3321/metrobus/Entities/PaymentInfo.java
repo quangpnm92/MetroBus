@@ -2,6 +2,9 @@
 package com.cs3321.metrobus.Entities;
 
 public class PaymentInfo extends AccountInfo {
+    
+    static public PaymentInfo paymentinfo_login;
+    
     private String cardNumber;
     private String name;
     private String expireDate;
@@ -68,5 +71,6 @@ public class PaymentInfo extends AccountInfo {
         this.cvc = pay.cvc;
         this.money = pay.money;
     }
+    
     
 }

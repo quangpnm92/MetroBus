@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class PaymentView {
 
     
-    public void displayPayment() {   
+    public static void displayPayment() {   
         System.out.printf(" --------------------------------%n");
         System.out.printf("          Payment info      %n");
         System.out.printf(" --------------------------------%n");

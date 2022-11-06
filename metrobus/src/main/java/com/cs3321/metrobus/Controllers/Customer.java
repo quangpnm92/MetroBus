@@ -4,6 +4,7 @@
  */
 package com.cs3321.metrobus.Controllers;
 
+import static com.cs3321.metrobus.Controllers.CommonFunction.customer;
 import com.cs3321.metrobus.Entities.AccountInfo;
 import com.cs3321.metrobus.Entities.PeopleInfo;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Customer implements Account{
 
     @Override
     public boolean checkRole(AccountInfo account) {
-        return account.getRole() == "1";
+        return customer.equals(account.getRole());
     }
 
     @Override

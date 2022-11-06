@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.cs3321.metrobus.Controllers;
+import static com.cs3321.metrobus.Controllers.CommonFunction.staff;
 import com.cs3321.metrobus.Entities.AccountInfo;
 import com.cs3321.metrobus.Entities.PeopleInfo;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class Staff implements Account {
     
     @Override
     public boolean checkRole(AccountInfo account) {
-        return account.getRole() == "0";
+        return staff.equals(account.getRole());
     }
     
     @Override

@@ -18,16 +18,17 @@ import java.util.Scanner;
  * @author Quan
  */
 public class Payment {
+
     public PaymentInfo payment = new PaymentInfo();
     
-    public boolean processPayment(PaymentInfo payment, double price) {
+    private void processPayment(PaymentInfo payment, TripInfo trip, int available) {
+        double price = trip.getPrice()*available;
         if (checkCard(payment, price)) {
             payment.setMoney(payment.getMoney() - price);
-            ReceiptView.printReceipt(payment,price);
-            return true;
+            trip.setAvailable(trip.getAvailable() - available);
+            ReceiptView.printReceipt(payment,trip);
         }
-        return false;
-    }
+    }   
 
     private boolean checkCard(PaymentInfo payment, double price) {
 
@@ -65,8 +66,9 @@ public class Payment {
 //        PaymentInfo payment = new PaymentInfo("4567898751212548", "Quang", "01-01-2023", "456", 30000);
 //        a.processPayment(payment, 20000);
     }
-    public void makePayment(TripInfo trip) // -ghe
+    public void makePayment(TripInfo trip, int available) // -ghe
     {   
+        processPayment(PaymentInfo.paymentinfo_login,trip, available);
         
     }
     

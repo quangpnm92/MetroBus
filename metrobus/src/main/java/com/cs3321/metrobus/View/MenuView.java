@@ -5,6 +5,7 @@
 package com.cs3321.metrobus.View;
 
 import com.cs3321.metrobus.Controllers.CommonFunction;
+import static com.cs3321.metrobus.View.PaymentView.displayPayment;
 import java.util.Scanner;
 
 /**
@@ -150,11 +151,11 @@ public class MenuView {
                 System.exit(0);
             }
             case 1 -> {
-                TripView trip = new TripView();
-                trip.displayTable();
+                TripView.displayTable();
             }
             case 2 -> {
-                System.out.println("Out for 2");
+                TripView.displayTable();
+                PaymentView.displayPayment();
             }
 
             case 3 -> {

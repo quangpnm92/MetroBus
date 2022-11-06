@@ -11,15 +11,15 @@ import java.util.Date;
 
 public class ReceiptView {
 
-    public static void printReceipt(PaymentInfo payment,double price){
+    public static void printReceipt(PaymentInfo payment,TripInfo trip){
         CommonFunction.clearConsole();
         String line = new String(new char[48]).replace('\0', '-');
         Date date = new Date();
         
         //delete the following once we pass parameters
         String customerName=payment.getName();
-        String departureCity="Houston";
-        String arrivalCity="Dallas";
+        String departureCity=trip.getDepartureCity();
+        String arrivalCity=trip.getArrivalCity();
         //**********************
         
         System.out.println(line);
@@ -45,7 +45,7 @@ public class ReceiptView {
         
         System.out.printf("|%s|%s|%n",
                 StringUtils.center("Total Price", 22),
-                StringUtils.center("$"+String.format("%,.2f", price), 23));
+                StringUtils.center("$"+String.format("%,.2f", trip.getPrice()), 23));
 
         System.out.println(line);
         

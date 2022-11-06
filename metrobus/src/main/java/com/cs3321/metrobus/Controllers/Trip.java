@@ -19,12 +19,10 @@ public class Trip {
     public TripInfo trip = new TripInfo();
 
     private boolean checkSeat(String id, int available) {
-        
-        
         if (checkID(id)) {
             TripInfo trip_extract = extractInfo(id);
             
-            if (trip_extract.getAvailable() <= available)
+            if (trip_extract.getAvailable() >= available)
                 return true;
         }
         return false;
@@ -74,7 +72,7 @@ public class Trip {
         if (checkSeat(id, available))
         {
             TripInfo trip_extract = extractInfo(id);
-            payment.makePayment(trip_extract);
+            payment.makePayment(trip_extract, available);
         }
     }
             

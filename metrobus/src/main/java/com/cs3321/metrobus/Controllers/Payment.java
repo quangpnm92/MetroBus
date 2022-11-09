@@ -6,6 +6,7 @@ package com.cs3321.metrobus.Controllers;
 
 import com.cs3321.metrobus.Entities.PaymentInfo;
 import com.cs3321.metrobus.Entities.TripInfo;
+import com.cs3321.metrobus.View.MenuView;
 import com.cs3321.metrobus.View.ReceiptView;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,15 +21,21 @@ import java.util.Scanner;
 public class Payment {
 
     public PaymentInfo payment = new PaymentInfo();
-    
+
+    MenuView menu = new MenuView();
+
     private void processPayment(PaymentInfo payment, TripInfo trip, int available) {
-        double price = trip.getPrice()*available;
+        double price = trip.getPrice() * available;
         if (checkCard(payment, price)) {
             payment.setMoney(payment.getMoney() - price);
             trip.setAvailable(trip.getAvailable() - available);
-            ReceiptView.printReceipt(payment,trip);
+            trip.setTaken(trip.getTaken() + available);
+            ReceiptView.printReceipt(payment, trip);
+            CommonFunction.writeCSV_TripInfo(trip);
+        } else {
+            menu.runMenuUser();
         }
-    }   
+    }
 
     private boolean checkCard(PaymentInfo payment, double price) {
 
@@ -51,6 +58,8 @@ public class Payment {
         }
 
         if (payment.getMoney() < price) {
+            System.out.println("This card is not enough money");
+            System.out.println("You only have: " + payment.getMoney());
             return false;
         }
 
@@ -66,12 +75,13 @@ public class Payment {
 //        PaymentInfo payment = new PaymentInfo("4567898751212548", "Quang", "01-01-2023", "456", 30000);
 //        a.processPayment(payment, 20000);
     }
+
     public void makePayment(TripInfo trip, int available) // -ghe
-    {   
-        processPayment(PaymentInfo.paymentinfo_login,trip, available);
-        
+    {
+        processPayment(PaymentInfo.paymentinfo_login, trip, available);
+
     }
-    
+
     public PaymentInfo extractInfo(String username, String password) {
 
         try ( Scanner sc = new Scanner(new File(CommonFunction.path + "login.csv"))) {

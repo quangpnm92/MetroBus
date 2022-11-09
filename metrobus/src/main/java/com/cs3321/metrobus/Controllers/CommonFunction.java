@@ -9,10 +9,14 @@ import com.cs3321.metrobus.Entities.PeopleInfo;
 import com.cs3321.metrobus.Entities.TripInfo;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,7 +28,7 @@ public class CommonFunction {
     static public String admin = "0";
     static public String staff = "1";
     static public String customer = "2";
-    
+
     static public boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
@@ -92,7 +96,7 @@ public class CommonFunction {
                 int taken = Integer.parseInt(values[3].trim());
                 int available = Integer.parseInt(values[4].trim());
                 Double price = Double.parseDouble(values[5].trim());
-                TripInfo trip = new TripInfo(id,departure, arrival, available, taken, price);
+                TripInfo trip = new TripInfo(id, departure, arrival, available, taken, price);
                 trips.add(trip);
 
             }
@@ -100,5 +104,40 @@ public class CommonFunction {
             ;
         }
         return trips;
+    }
+
+    static public void writeCSV_TripInfo(TripInfo trip) {
+        String bigString = "";
+        try ( Scanner sc = new Scanner(new File(path + "trip.csv"))) {
+
+            sc.useDelimiter("\n");
+
+            while (sc.hasNextLine()) {
+                String[] values = sc.next().split(",");
+                String id = values[0].trim();
+
+                if (trip.getTripID().equals(id)) {
+                    values[3] = String.valueOf(trip.getTaken());
+                    values[4] = String.valueOf(trip.getAvailable());
+                }
+
+                for (int i = 0; i < values.length; i++) {
+                    bigString += values[i] + ",";
+                }
+                bigString = bigString.substring(0, bigString.length() - 1);
+                bigString += "\n";
+            }
+
+            bigString = bigString.substring(0, bigString.length() - 1);
+
+            FileWriter myWriter = new FileWriter(path + "trip.csv", false);
+            myWriter.write(bigString);
+            myWriter.close();
+
+        } catch (FileNotFoundException ex) {
+            ;
+        } catch (IOException ex) {
+        }
+
     }
 }

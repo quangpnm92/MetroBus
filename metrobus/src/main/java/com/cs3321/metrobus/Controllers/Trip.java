@@ -5,6 +5,7 @@
 package com.cs3321.metrobus.Controllers;
 
 import com.cs3321.metrobus.Entities.TripInfo;
+import com.cs3321.metrobus.View.PaymentView;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -24,6 +25,10 @@ public class Trip {
             
             if (trip_extract.getAvailable() >= available)
                 return true;
+        }
+        else {
+            System.out.println("We dont' have ID " + id + " for trip");
+            return false;
         }
         return false;
     }
@@ -73,6 +78,11 @@ public class Trip {
         {
             TripInfo trip_extract = extractInfo(id);
             payment.makePayment(trip_extract, available);
+        }
+        else
+        {
+            System.out.println("Available is not enough");
+            PaymentView.displayPayment();
         }
     }
             

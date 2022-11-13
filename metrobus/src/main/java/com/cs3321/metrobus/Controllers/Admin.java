@@ -9,8 +9,8 @@ package com.cs3321.metrobus.Controllers;
  * @author rhett
  */
 public class Admin {
-    private Double promotion = 0.00;
-    private boolean ongoingPromotion = false;
+    private static Double promotion = 0.00;
+    private static boolean ongoingPromotion = false;
 
     public Double getPromotion() {
         return promotion;
@@ -27,5 +27,21 @@ public class Admin {
     public void addPromotion() {
         this.ongoingPromotion = true;
     }
+    
+    public boolean getPromotionStatus() {
+        return ongoingPromotion;
+    }
+    
+    public void setPromotion() {
+        ongoingPromotion = !ongoingPromotion;
+    }
+    
+    public void setPromotionStatus(String value) {
+        ongoingPromotion = Boolean.parseBoolean(value);
+    }
+    
+//    Admin() {
+//        CommonFunction.readDiscounts();
+//    }
     
 }

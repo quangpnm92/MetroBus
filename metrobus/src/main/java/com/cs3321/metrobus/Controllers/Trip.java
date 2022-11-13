@@ -45,7 +45,7 @@ public class Trip {
     }
 
     public TripInfo extractInfo(String id) {
-
+        Admin myAdmin = new Admin();
         try ( Scanner sc = new Scanner(new File(CommonFunction.path + "trip.csv"))) {
             sc.useDelimiter("\n");
 
@@ -57,7 +57,7 @@ public class Trip {
                     String arrival = values[2].trim();
                     int taken = Integer.parseInt(values[3].trim());
                     int available = Integer.parseInt(values[4].trim());
-                    Double price = Double.parseDouble(values[5].trim());
+                    Double price = Double.parseDouble(values[5].trim()) * (1 - myAdmin.getPromotion());
 
                     trip = new TripInfo(id, departure, arrival, available, taken, price);
 

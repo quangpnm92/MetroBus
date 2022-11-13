@@ -46,15 +46,21 @@ public class TripView extends Trip {
     public static void displayTable() {
 
         ArrayList<TripInfo> trips = CommonFunction.readCSV_TripInfo();
-
+        AdminView myAdmin = new AdminView();
         String line = new String(new char[96]).replace('\0', '-');
-
+        CommonFunction.readDiscounts();
         String departureCity;
         String arrivalCity;
         String id;
         int availableSeats;
         int totalSeats;
         double price;
+        double promotion;
+        double discount = 1.00;
+        if (myAdmin.getPromotionStatus()) {
+            promotion = myAdmin.getPromotion();
+            discount = discount - promotion; 
+        }
 
         System.out.println(line);
         System.out.printf("|%s|%n",
@@ -75,7 +81,7 @@ public class TripView extends Trip {
             arrivalCity = trips.get(i).getArrivalCity();
             availableSeats = trips.get(i).getAvailable();
             totalSeats = trips.get(i).getSeats();
-            price = trips.get(i).getPrice();
+            price = trips.get(i).getPrice() * discount;
 
             System.out.printf("|%s|%s|%s|%s|%s|%n",
                     StringUtils.center(id, 18),

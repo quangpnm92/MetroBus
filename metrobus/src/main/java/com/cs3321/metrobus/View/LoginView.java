@@ -20,33 +20,33 @@ public class LoginView {
         Payment payment = new Payment();
         MenuView menu = new MenuView();
         Login lg = new Login();
-        
-        System.out.printf(" --------------------------------%n");
-        System.out.printf("          Login info      %n");
-        System.out.printf(" --------------------------------%n");
-     //   System.out.printf("| %-10s | %-10s |%n", " USER NAME", "PASSWORD");
         String username, password;
         Scanner s = new Scanner(System.in);
-        System.out.print("   Username:");//username:user
-        username = s.nextLine();
-        System.out.print("   Password:");//password:user
-        password = s.nextLine();
-        if(lg.checkLogin(username, password))
-        {
-            PaymentInfo paymentinfo = payment.extractInfo(username, password);
-            PaymentInfo.paymentinfo_login = new PaymentInfo(paymentinfo);
+        
+        do {
+            System.out.printf(" --------------------------------%n");
+            System.out.printf("          Login info      %n");
+            System.out.printf(" --------------------------------%n");
+            System.out.print("Username: ");
+            username = s.nextLine();
+            System.out.print("Password: ");
+            password = s.nextLine();
             
-            if (paymentinfo.getRole().equals(CommonFunction.admin))
-                menu.runMenuAdmin();
-            else if (paymentinfo.getRole().equals(CommonFunction.staff))
-                menu.runMenuStaff();
-            else if (paymentinfo.getRole().equals(CommonFunction.customer))
-                menu.runMenuUser();
-        }
-        else
-        {
-            System.out.println("   Authentication Failed");
-        }
+            if(!lg.checkLogin(username, password)) {
+                System.out.println("Username/Password combination does not match. Please try again.\n");
+            }
+            
+        }while(!lg.checkLogin(username,password));
+        
+        PaymentInfo paymentinfo = payment.extractInfo(username, password);
+        PaymentInfo.paymentinfo_login = new PaymentInfo(paymentinfo);
+            
+        if (paymentinfo.getRole().equals(CommonFunction.admin))
+            menu.runMenuAdmin();
+        else if (paymentinfo.getRole().equals(CommonFunction.staff))
+            menu.runMenuStaff();
+        else if (paymentinfo.getRole().equals(CommonFunction.customer))
+            menu.runMenuUser();
         
         System.out.printf(" --------------------------------%n");
     }

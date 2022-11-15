@@ -109,16 +109,13 @@ public class MenuView {
                 staff.displayTable();
             }
             case 2 -> { //rhett 11-11-2022
-                  myAdmin.displayPromotion();
+                  myAdmin.displayEnablePromotion();
             }
 
             case 3 -> { //rhett 11-11-2022
                 myAdmin.setNewPromotion();
-                //System.out.println("Out for 3");
-
             }
             case 4 -> {
-                //TripView.displayTable();
                 myAdmin.displayTable();
             }
             default ->
@@ -144,7 +141,6 @@ public class MenuView {
 
             case 3 -> {
                 System.out.println("Out for 3");
-
             }
             default ->
                 System.out.println("Unknown error has occured.");

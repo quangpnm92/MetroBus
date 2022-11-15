@@ -12,10 +12,12 @@ import java.util.Scanner;
  */
 public class AdminView extends Admin {
     
-    public void displayPromotion() {
+    public void displayEnablePromotion() {
+        CommonFunction.readDiscounts();
         System.out.println("Current promotion status: " + (this.getPromotionStatus()?"Enabled":"Disabled"));
         this.setPromotion();
         System.out.println("Setting promotion to.. " + (this.getPromotionStatus()?"Enabled":"Disabled"));
+        CommonFunction.writeDiscounts(this.getPromotionStatus(), this.getPromotion());
     }
     
     public void setNewPromotion() {

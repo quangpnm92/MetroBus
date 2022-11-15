@@ -40,8 +40,4 @@ public class Admin {
         ongoingPromotion = Boolean.parseBoolean(value);
     }
     
-//    Admin() {
-//        CommonFunction.readDiscounts();
-//    }
-    
 }

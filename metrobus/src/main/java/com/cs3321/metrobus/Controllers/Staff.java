@@ -5,8 +5,6 @@
 package com.cs3321.metrobus.Controllers;
 import static com.cs3321.metrobus.Controllers.CommonFunction.staff;
 import com.cs3321.metrobus.Entities.AccountInfo;
-import com.cs3321.metrobus.Entities.PeopleInfo;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**

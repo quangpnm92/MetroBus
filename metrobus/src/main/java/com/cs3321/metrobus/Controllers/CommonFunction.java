@@ -140,17 +140,17 @@ public class CommonFunction {
         }
 
     }
-    
-    public static void readDiscounts(){
+
+    public static void readDiscounts() {
         Admin myAdmin = new Admin();
         try ( Scanner sc = new Scanner(new File(CommonFunction.path + "discount.csv"))) {
             myAdmin.setPromotionStatus(sc.next());
             myAdmin.editPromotion(sc.nextDouble());
-        }catch(IOException ex) {
+        } catch (IOException ex) {
             System.err.print("Discount input error");
         }
     }
-    
+
     public static void writeDiscounts(boolean promotionStatus, Double promotionValue) {
         Admin myAdmin = new Admin();
         try {
@@ -158,7 +158,7 @@ public class CommonFunction {
             myWriter.write(String.valueOf(promotionStatus) + '\n');
             myWriter.write(String.valueOf(promotionValue) + '\n');
             myWriter.close();
-        }catch(IOException ex) {
+        } catch (IOException ex) {
             System.err.print("Discount writing error");
         }
     }

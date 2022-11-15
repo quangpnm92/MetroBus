@@ -6,6 +6,7 @@ package com.cs3321.metrobus.View;
 
 import com.cs3321.metrobus.Controllers.CommonFunction;
 import static com.cs3321.metrobus.View.PaymentView.displayPayment;
+import com.cs3321.metrobus.Controllers.Admin;
 import java.util.Scanner;
 
 /**
@@ -57,8 +58,9 @@ public class MenuView {
     private void printAdminView() {
         System.out.println("\nPlease make a selection");
         System.out.println("1) View Staffs info");
-        System.out.println("2) View Purchased trips");
-        System.out.println("3) Purchase a New Trip");
+        System.out.println("2) Enable/Disable Promotional Discounts");
+        System.out.println("3) Modify Promotional Discount");
+        System.out.println("4) View Trip table");
         System.out.println("0) Exit");
     }
 
@@ -81,7 +83,7 @@ public class MenuView {
         Scanner kb = new Scanner(System.in);
 
         int choice = -1;
-        while (choice < 0 || choice > 3) {
+        while (choice < 0 || choice > 4) {
             try {
                 System.out.print("\nEnter your choice: ");
                 choice = Integer.parseInt(kb.nextLine());
@@ -95,6 +97,7 @@ public class MenuView {
     }
 
     private void performAdminAction(int choice) {
+        AdminView myAdmin = new AdminView();
 
         switch (choice) {
             case 0 -> {
@@ -105,13 +108,15 @@ public class MenuView {
                 StaffView staff = new StaffView();
                 staff.displayTable();
             }
-            case 2 -> {
-                System.out.println("Out for 2");
+            case 2 -> { //rhett 11-11-2022
+                  myAdmin.displayEnablePromotion();
             }
 
-            case 3 -> {
-                System.out.println("Out for 3");
-
+            case 3 -> { //rhett 11-11-2022
+                myAdmin.setNewPromotion();
+            }
+            case 4 -> {
+                myAdmin.displayTable();
             }
             default ->
                 System.out.println("Unknown error has occured.");
@@ -136,7 +141,6 @@ public class MenuView {
 
             case 3 -> {
                 System.out.println("Out for 3");
-
             }
             default ->
                 System.out.println("Unknown error has occured.");

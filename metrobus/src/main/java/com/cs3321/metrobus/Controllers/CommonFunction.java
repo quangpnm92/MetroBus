@@ -162,4 +162,32 @@ public class CommonFunction {
             System.err.print("Discount writing error");
         }
     }
+
+    static public void writeCSV_ReportInfo(PaymentInfo payment, TripInfo trip) {
+        FileWriter myWriter = null;
+        try {
+            String bigString = "";
+            //String name = values[0].trim();
+            bigString += String.valueOf(payment.getName()) + " ,";
+            bigString += String.valueOf(trip.getTripID())  + " ,";
+            bigString += String.valueOf(trip.getDepartureCity())  + " ,";
+            bigString += String.valueOf(trip.getArrivalCity())  + " ,";
+            bigString += String.valueOf(trip.getPrice())  + " ,";
+            bigString += String.valueOf(trip.getTaken())  + " ,";
+            bigString += "\n";
+            
+            myWriter = new FileWriter(path + "report.csv", false);
+            myWriter.write(bigString);
+            myWriter.close();
+        } catch (IOException ex) {
+            Logger.getLogger(CommonFunction.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                myWriter.close();
+            } catch (IOException ex) {
+                Logger.getLogger(CommonFunction.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
 }

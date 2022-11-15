@@ -55,12 +55,12 @@ public class ReceiptView {
                 StringUtils.center("Have a nice trip! :)", 46));
         
         System.out.println(line);
-        
+        CommonFunction.writeCSV_ReportInfo(payment,trip);
     }
     
     public static void main(String[] args) {
         PaymentInfo payment = new PaymentInfo("1234567899876541", "Quang", "7/28", "987", 300, "admin123", "admin123", "0");
-        TripInfo trip = new TripInfo("1", "Hosuton", "Dallass", 30, 50, 100);
+        TripInfo trip = new TripInfo("1", "abc", "zxy", 30, 50, 100);
         printReceipt(payment, trip);
     }
 }

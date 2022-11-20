@@ -17,11 +17,6 @@ public class MenuView {
 
     boolean exit;
 
-    public static void main(String[] args) {
-        MenuView menu = new MenuView();
-
-    }
-
     public void runMenuAdmin() {
         printHeader();
         while (!exit) {
@@ -67,8 +62,7 @@ public class MenuView {
     private void printStaffView() {
         System.out.println("\nPlease make a selection");
         System.out.println("1) View Customer info");
-        System.out.println("2) Edit trip");
-        System.out.println("3) Edit staff");
+        System.out.println("2) Print General Report");
         System.out.println("0) Exit");
     }
 
@@ -136,7 +130,7 @@ public class MenuView {
                 customer.displayTable();
             }
             case 2 -> {
-                System.out.println("Out for 2");
+                ReportView.printReport();
             }
 
             case 3 -> {

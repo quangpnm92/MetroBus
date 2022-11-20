@@ -6,11 +6,13 @@ package com.cs3321.metrobus.Controllers;
 
 import com.cs3321.metrobus.Entities.PaymentInfo;
 import com.cs3321.metrobus.Entities.PeopleInfo;
+import com.cs3321.metrobus.Entities.ReportInfo;
 import com.cs3321.metrobus.Entities.TripInfo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,14 +52,14 @@ public class CommonFunction {
         Date date = null;
         try {
             date = df.parse(str);
-        } catch (Exception ex) {
+        } catch (ParseException ex) {
 
         }
         return date;
     }
 
     static public ArrayList<PeopleInfo> readCSV(String choice) {
-        ArrayList<PeopleInfo> peoples = new ArrayList<PeopleInfo>();
+        ArrayList<PeopleInfo> peoples = new ArrayList<>();
 
         try ( Scanner sc = new Scanner(new File(CommonFunction.path + "login.csv"))) {
 
@@ -82,7 +84,7 @@ public class CommonFunction {
     }
 
     static public ArrayList<TripInfo> readCSV_TripInfo() {
-        ArrayList<TripInfo> trips = new ArrayList<TripInfo>();
+        ArrayList<TripInfo> trips = new ArrayList<>();
 
         try ( Scanner sc = new Scanner(new File(CommonFunction.path + "trip.csv"))) {
 
@@ -121,8 +123,8 @@ public class CommonFunction {
                     values[4] = String.valueOf(trip.getAvailable());
                 }
 
-                for (int i = 0; i < values.length; i++) {
-                    bigString += values[i] + ",";
+                for (String value : values) {
+                    bigString += value + ",";
                 }
                 bigString = bigString.substring(0, bigString.length() - 1);
                 bigString += "\n";
@@ -152,7 +154,6 @@ public class CommonFunction {
     }
 
     public static void writeDiscounts(boolean promotionStatus, Double promotionValue) {
-        Admin myAdmin = new Admin();
         try {
             FileWriter myWriter = new FileWriter(CommonFunction.path + "discount.csv");
             myWriter.write(String.valueOf(promotionStatus) + '\n');
@@ -163,31 +164,62 @@ public class CommonFunction {
         }
     }
 
-    static public void writeCSV_ReportInfo(PaymentInfo payment, TripInfo trip) {
-        FileWriter myWriter = null;
-        try {
-            String bigString = "";
-            //String name = values[0].trim();
+    static public void writeCSV_ReportInfo(PaymentInfo payment, TripInfo trip, String taken) {
+        String bigString = "";
+
+        try ( Scanner sc = new Scanner(new File(path + "report.csv"))) {
+
+            sc.useDelimiter("\n");
+
+            while (sc.hasNextLine()) {
+                String read = sc.nextLine();
+                read = read.replaceAll("(\\r)", "");
+                
+                bigString += read + "\r\n";
+            }
+
             bigString += String.valueOf(payment.getName()) + " ,";
-            bigString += String.valueOf(trip.getTripID())  + " ,";
-            bigString += String.valueOf(trip.getDepartureCity())  + " ,";
-            bigString += String.valueOf(trip.getArrivalCity())  + " ,";
-            bigString += String.valueOf(trip.getPrice())  + " ,";
-            bigString += String.valueOf(trip.getTaken())  + " ,";
-            bigString += "\n";
-            
-            myWriter = new FileWriter(path + "report.csv", false);
+            bigString += String.valueOf(payment.getCardNumber()) + " ,";
+            bigString += String.valueOf(trip.getTripID()) + " ,";
+            bigString += String.valueOf(trip.getDepartureCity()) + " ,";
+            bigString += String.valueOf(trip.getArrivalCity()) + " ,";
+            bigString += String.valueOf(trip.getPrice()) + " ,";
+            bigString += String.valueOf(taken);
+
+            FileWriter myWriter = new FileWriter(path + "report.csv", false);
             myWriter.write(bigString);
             myWriter.close();
         } catch (IOException ex) {
             Logger.getLogger(CommonFunction.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                myWriter.close();
-            } catch (IOException ex) {
-                Logger.getLogger(CommonFunction.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
+    }
+
+    static public ArrayList<ReportInfo> readCSV_GeneralReport() {
+        ArrayList<ReportInfo> reports = new ArrayList<>();
+
+        try ( Scanner sc = new Scanner(new File(CommonFunction.path + "report.csv"))) {
+
+            sc.useDelimiter("\n");
+
+            while (sc.hasNextLine()) {
+                String[] values = sc.next().split(",");
+
+                String name = values[0].trim();
+                String card = values[1].trim();
+                String id = values[2].trim();
+                String departure = values[3].trim();
+                String arrival = values[4].trim();
+                String price = values[5].trim();
+                String taken = values[6].trim();
+
+                ReportInfo report = new ReportInfo(name, card, id, departure, arrival, price, taken);
+                reports.add(report);
+
+            }
+        } catch (FileNotFoundException ex) {
+            ;
+        }
+        return reports;
     }
 
 }

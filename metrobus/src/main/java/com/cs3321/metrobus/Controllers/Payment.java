@@ -24,20 +24,20 @@ public class Payment {
 
     MenuView menu = new MenuView();
 
-    private void processPayment(PaymentInfo payment, TripInfo trip, int available) {
+    private void processPayment(PaymentInfo payment, TripInfo trip, int available, String cvc) {
         double price = trip.getPrice() * available;
-        if (checkCard(payment, price)) {
+        if (checkCard(payment, price,cvc )) {
             payment.setMoney(payment.getMoney() - price);
             trip.setAvailable(trip.getAvailable() - available);
             trip.setTaken(trip.getTaken() + available);
-            ReceiptView.printReceipt(payment, trip);
+            ReceiptView.printReceipt(payment, trip,price, String.valueOf(available));
             CommonFunction.writeCSV_TripInfo(trip);
         } else {
             menu.runMenuUser();
         }
     }
 
-    private boolean checkCard(PaymentInfo payment, double price) {
+    private boolean checkCard(PaymentInfo payment, double price, String cvc) {
 
         Date today = new Date();
 
@@ -49,7 +49,7 @@ public class Payment {
             return false;
         }
 
-        if (payment.getCvc().length() != 3 || payment.getCvc().isBlank() || !CommonFunction.isNumeric(payment.getCvc())) {
+        if (payment.getCvc().length() != 3 || payment.getCvc().isBlank() || !CommonFunction.isNumeric(payment.getCvc()) || !cvc.equals(payment.getCvc())) {
             return false;
         }
 
@@ -76,9 +76,9 @@ public class Payment {
 //        a.processPayment(payment, 20000);
     }
 
-    public void makePayment(TripInfo trip, int available) // -ghe
+    public void makePayment(TripInfo trip, int available, String cvc) // -ghe
     {
-        processPayment(PaymentInfo.paymentinfo_login, trip, available);
+        processPayment(PaymentInfo.paymentinfo_login, trip, available, cvc);
 
     }
 

@@ -54,4 +54,9 @@ public class StaffView extends Staff {
     
         System.out.println(line);
     }
+    
+    public void generalReport()        
+    {
+        
+    }
 }

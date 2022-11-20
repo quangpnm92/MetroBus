@@ -71,13 +71,13 @@ public class Trip {
         return trip;
     }
     
-    public void readyPayment(String id, int available)
+    public void readyPayment(String id, int available, String cvc)
     {
         Payment payment = new Payment();
         if (checkSeat(id, available))
         {
             TripInfo trip_extract = extractInfo(id);
-            payment.makePayment(trip_extract, available);
+            payment.makePayment(trip_extract, available, cvc);
         }
         else
         {

@@ -18,7 +18,7 @@ public class PaymentView {
         System.out.printf("          Payment info      %n");
         System.out.printf(" --------------------------------%n");
      //   System.out.printf("| %-10s | %-10s |%n", " USER NAME", "PASSWORD");
-        String id;
+        String id, cvc;
         int many;
         Scanner s = new Scanner(System.in);
         System.out.print("What trip you are:");//username:user
@@ -27,8 +27,12 @@ public class PaymentView {
         many = Integer.parseInt(s.nextLine());
         System.out.printf(" --------------------------------%n");
         
+        System.out.print("Enter your CVC:");//password:user
+        cvc = s.nextLine();
+        System.out.printf(" --------------------------------%n");
+        
         Trip trip = new Trip();
-        trip.readyPayment(id, many);
+        trip.readyPayment(id, many,cvc);
         
     }
     

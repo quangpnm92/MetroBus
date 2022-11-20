@@ -16,5 +16,5 @@ import java.util.Date;
  * @author rhett
  */
 public class Report {
-
+    
 }

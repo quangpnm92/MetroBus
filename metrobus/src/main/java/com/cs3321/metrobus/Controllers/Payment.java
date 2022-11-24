@@ -50,6 +50,7 @@ public class Payment {
         }
 
         if (payment.getCvc().length() != 3 || payment.getCvc().isBlank() || !CommonFunction.isNumeric(payment.getCvc()) || !cvc.equals(payment.getCvc())) {
+            System.out.println("CVC is different from the file");
             return false;
         }
 

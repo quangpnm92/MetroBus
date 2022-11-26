@@ -55,8 +55,8 @@ public class Trip {
                 if ((id.equals(values[0].trim()))) {
                     String departure = values[1].trim();
                     String arrival = values[2].trim();
-                    int taken = Integer.parseInt(values[3].trim());
-                    int available = Integer.parseInt(values[4].trim());
+                    int available = Integer.parseInt(values[3].trim());
+                    int taken = Integer.parseInt(values[4].trim());
                     Double price = Double.parseDouble(values[5].trim()) * (1 - myAdmin.getPromotion());
 
                     trip = new TripInfo(id, departure, arrival, available, taken, price);

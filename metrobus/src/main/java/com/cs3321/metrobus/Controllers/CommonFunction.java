@@ -95,15 +95,15 @@ public class CommonFunction {
                 String id = values[0].trim();
                 String departure = values[1].trim();
                 String arrival = values[2].trim();
-                int taken = Integer.parseInt(values[3].trim());
-                int available = Integer.parseInt(values[4].trim());
+                int available = Integer.parseInt(values[3].trim());
+                int taken = Integer.parseInt(values[4].trim());
                 Double price = Double.parseDouble(values[5].trim());
                 TripInfo trip = new TripInfo(id, departure, arrival, available, taken, price);
                 trips.add(trip);
 
             }
         } catch (FileNotFoundException ex) {
-            ;
+            System.out.println("File not found");
         }
         return trips;
     }
@@ -119,8 +119,8 @@ public class CommonFunction {
                 String id = values[0].trim();
 
                 if (trip.getTripID().equals(id)) {
-                    values[3] = String.valueOf(trip.getTaken());
-                    values[4] = String.valueOf(trip.getAvailable());
+                    values[3] = String.valueOf(trip.getAvailable());
+                    values[4] = String.valueOf(trip.getTaken());
                 }
 
                 for (String value : values) {

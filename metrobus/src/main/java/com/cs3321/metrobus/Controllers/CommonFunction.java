@@ -96,9 +96,9 @@ public class CommonFunction {
                 String departure = values[1].trim();
                 String arrival = values[2].trim();
                 int available = Integer.parseInt(values[3].trim());
-                int taken = Integer.parseInt(values[4].trim());
+                int total = Integer.parseInt(values[4].trim());
                 Double price = Double.parseDouble(values[5].trim());
-                TripInfo trip = new TripInfo(id, departure, arrival, available, taken, price);
+                TripInfo trip = new TripInfo(id, departure, arrival, available, total, price);
                 trips.add(trip);
 
             }
@@ -164,7 +164,7 @@ public class CommonFunction {
         }
     }
 
-    static public void writeCSV_ReportInfo(PaymentInfo payment, TripInfo trip, String taken) {
+    static public void writeCSV_ReportInfo(PaymentInfo payment, TripInfo trip, String total) {
         String bigString = "";
 
         try ( Scanner sc = new Scanner(new File(path + "report.csv"))) {
@@ -184,7 +184,7 @@ public class CommonFunction {
             bigString += String.valueOf(trip.getDepartureCity()) + " ,";
             bigString += String.valueOf(trip.getArrivalCity()) + " ,";
             bigString += String.valueOf(trip.getPrice()) + " ,";
-            bigString += String.valueOf(taken);
+            bigString += String.valueOf(total);
 
             FileWriter myWriter = new FileWriter(path + "report.csv", false);
             myWriter.write(bigString);

@@ -87,12 +87,12 @@ public class TripInfo {
         this.price = price;
     }
 
-    public TripInfo(String id,String departureCity, String arrivalCity, int available, int taken, double price) {
+    public TripInfo(String id,String departureCity, String arrivalCity, int available, int total, double price) {
         this.tripID = id;
         this.departureCity = departureCity;
         this.arrivalCity = arrivalCity;
         this.available = available;
-        this.total = taken;
+        this.total = total;
         this.price = price;
     }
     

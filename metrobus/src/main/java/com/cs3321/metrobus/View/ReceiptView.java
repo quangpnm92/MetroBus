@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class ReceiptView {
 
-    public static void printReceipt(PaymentInfo payment, TripInfo trip, double price, String available) {
+    public static void printReceipt(PaymentInfo payment, TripInfo trip, double price, String ticket) {
         CommonFunction.clearConsole();
         String line = new String(new char[48]).replace('\0', '-');
         Date date = new Date();
@@ -44,8 +44,8 @@ public class ReceiptView {
                 StringUtils.center(arrivalCity, 23));
 
         System.out.printf("|%s|%s|%n",
-                StringUtils.center("Seats Buy", 22),
-                StringUtils.center(available, 23));
+                StringUtils.center("Tickets Buy", 22),
+                StringUtils.center(ticket, 23));
 
         System.out.printf("|%s|%s|%n",
                 StringUtils.center("Ticket Price", 22),
@@ -63,7 +63,7 @@ public class ReceiptView {
                 StringUtils.center("Have a nice trip! :)", 46));
 
         System.out.println(line);
-        CommonFunction.writeCSV_ReportInfo(payment, trip, available);
+        CommonFunction.writeCSV_ReportInfo(payment, trip, ticket);
     }
 
 //    public static void main(String[] args) {

@@ -24,13 +24,13 @@ public class Payment {
 
     MenuView menu = new MenuView();
 
-    private void processPayment(PaymentInfo payment, TripInfo trip, int available, String cvc) {
-        double price = trip.getPrice() * available;
+    private void processPayment(PaymentInfo payment, TripInfo trip, int ticket, String cvc) {
+        double price = trip.getPrice() * ticket;
         if (checkCard(payment, price,cvc )) {
             payment.setMoney(payment.getMoney() - price);
-            trip.setAvailable(trip.getAvailable() - available);
+            trip.setAvailable(trip.getAvailable() - ticket);
             //trip.setTotal(trip.getTotal());
-            ReceiptView.printReceipt(payment, trip,price, String.valueOf(available));
+            ReceiptView.printReceipt(payment, trip,price, String.valueOf(ticket));
             CommonFunction.writeCSV_TripInfo(trip);
         } else {
             menu.runMenuUser();

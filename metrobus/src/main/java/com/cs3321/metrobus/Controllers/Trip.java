@@ -56,16 +56,16 @@ public class Trip {
                     String departure = values[1].trim();
                     String arrival = values[2].trim();
                     int available = Integer.parseInt(values[3].trim());
-                    int taken = Integer.parseInt(values[4].trim());
+                    int total = Integer.parseInt(values[4].trim());
                     Double price = Double.parseDouble(values[5].trim()) * (1 - myAdmin.getPromotion());
 
-                    trip = new TripInfo(id, departure, arrival, available, taken, price);
+                    trip = new TripInfo(id, departure, arrival, available, total, price);
 
                     return trip;
                 }
             }
         } catch (FileNotFoundException ex) {
-            ;
+            System.out.println("File not found");
         }
 
         return trip;

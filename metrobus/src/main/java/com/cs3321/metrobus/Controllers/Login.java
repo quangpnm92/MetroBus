@@ -21,7 +21,7 @@ public class Login {
 
             }
         } catch (FileNotFoundException ex) {
-            ;
+            System.out.println("File not found");
         }
         return false;
     }

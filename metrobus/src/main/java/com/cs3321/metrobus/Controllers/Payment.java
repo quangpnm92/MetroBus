@@ -50,7 +50,7 @@ public class Payment {
         }
 
         if (payment.getCvc().length() != 3 || payment.getCvc().isBlank() || !CommonFunction.isNumeric(payment.getCvc()) || !cvc.equals(payment.getCvc())) {
-            System.out.println("CVC is different from the file");
+            System.out.println("---Invalid CVC---");
             return false;
         }
 
@@ -107,7 +107,7 @@ public class Payment {
                 }
             }
         } catch (FileNotFoundException ex) {
-            ;
+            System.out.println("File not found");
         }
 
         return payment;

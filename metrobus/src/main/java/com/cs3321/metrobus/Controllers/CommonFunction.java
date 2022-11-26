@@ -217,7 +217,7 @@ public class CommonFunction {
 
             }
         } catch (FileNotFoundException ex) {
-            ;
+            System.out.println("File not found");
         }
         return reports;
     }

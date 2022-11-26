@@ -23,8 +23,13 @@ public class PaymentView {
         Scanner s = new Scanner(System.in);
         System.out.print("What trip you are:");//username:user
         id = s.nextLine();
-        System.out.print("How many ticket you want:");//password:user
+        System.out.print("How many ticket(s) you want:");//password:user
         many = Integer.parseInt(s.nextLine());
+        while(many<=0){
+            System.out.print("Incorrect input---Try again: ");
+            many = Integer.parseInt(s.nextLine());
+        }
+            
         System.out.printf(" --------------------------------%n");
         
         System.out.print("Enter your CVC:");//password:user

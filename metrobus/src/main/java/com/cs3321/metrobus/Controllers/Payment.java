@@ -29,7 +29,7 @@ public class Payment {
         if (checkCard(payment, price,cvc )) {
             payment.setMoney(payment.getMoney() - price);
             trip.setAvailable(trip.getAvailable() - available);
-            trip.setTaken(trip.getTaken() + available);
+            //trip.setTotal(trip.getTotal());
             ReceiptView.printReceipt(payment, trip,price, String.valueOf(available));
             CommonFunction.writeCSV_TripInfo(trip);
         } else {

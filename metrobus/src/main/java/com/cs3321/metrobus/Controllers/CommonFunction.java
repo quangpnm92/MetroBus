@@ -120,7 +120,7 @@ public class CommonFunction {
 
                 if (trip.getTripID().equals(id)) {
                     values[3] = String.valueOf(trip.getAvailable());
-                    values[4] = String.valueOf(trip.getTaken());
+                    values[4] = String.valueOf(trip.getTotal());
                 }
 
                 for (String value : values) {

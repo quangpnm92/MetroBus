@@ -16,7 +16,7 @@ public class TripInfo {
     private String arrivalCity;
     private int seats;
     private int available;
-    private int taken;
+    private int total;
     private Date departureDate;
     private double price;
 
@@ -60,12 +60,12 @@ public class TripInfo {
         this.available = available;
     }
 
-    public int getTaken() {
-        return taken;
+    public int getTotal() {
+        return total;
     }
 
-    public void setTaken(int taken) {
-        this.taken = taken;
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     public Date getDepartureDate() {
@@ -92,7 +92,7 @@ public class TripInfo {
         this.departureCity = departureCity;
         this.arrivalCity = arrivalCity;
         this.available = available;
-        this.taken = taken;
+        this.total = taken;
         this.price = price;
     }
     

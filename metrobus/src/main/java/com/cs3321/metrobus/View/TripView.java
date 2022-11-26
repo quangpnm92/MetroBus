@@ -80,7 +80,7 @@ public class TripView extends Trip {
             departureCity = trips.get(i).getDepartureCity();
             arrivalCity = trips.get(i).getArrivalCity();
             availableSeats = trips.get(i).getAvailable();
-            totalSeats = trips.get(i).getSeats();
+            totalSeats = trips.get(i).getTotal();
             price = trips.get(i).getPrice() * discount;
 
             System.out.printf("|%s|%s|%s|%s|%s|%n",

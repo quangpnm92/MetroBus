@@ -183,7 +183,7 @@ public class CommonFunction {
             bigString += String.valueOf(trip.getTripID()) + " ,";
             bigString += String.valueOf(trip.getDepartureCity()) + " ,";
             bigString += String.valueOf(trip.getArrivalCity()) + " ,";
-            bigString += String.valueOf(trip.getPrice()) + " ,";
+            bigString += String.valueOf(String.format("%.2f", trip.getPrice())) + " ,";
             bigString += String.valueOf(total);
 
             FileWriter myWriter = new FileWriter(path + "report.csv", false);

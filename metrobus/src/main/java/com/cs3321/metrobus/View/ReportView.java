@@ -36,7 +36,8 @@ public class ReportView {
         for (ReportInfo report : reports) {
             System.out.println(line);
             String customerName = report.getName();
-            String card = report.getCard();
+            //String card = report.getCard();
+            String card = "**** **** **** " + report.getCard().substring(15);
             String id = report.getTripID();
             String departureCity = report.getDeparture();
             String arrivalCity = report.getArrival();
@@ -74,9 +75,9 @@ public class ReportView {
         System.out.println(line);
 
         System.out.printf("|%s|%n",
-                StringUtils.center("Thank you for your purchase!", 46));
+                StringUtils.center("General Ticket Report", 46));
         System.out.printf("|%s|%n",
-                StringUtils.center("Have a nice trip! :)", 46));
+                StringUtils.center("VC Ticketing Company", 46));
 
         System.out.println(line);
     }

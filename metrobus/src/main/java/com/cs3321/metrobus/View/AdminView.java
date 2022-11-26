@@ -22,10 +22,10 @@ public class AdminView extends Admin {
     
     public void setNewPromotion() {
         Scanner myScan = new Scanner(System.in);
-
+        CommonFunction.readDiscounts();
         Double newPromotion;
         System.out.println("Current promotion value: " + this.getPromotion());
-        System.out.println("New promotion value: ");
+        System.out.print("New promotion value: ");
         newPromotion = myScan.nextDouble();
         this.editPromotion(newPromotion);
         CommonFunction.writeDiscounts(this.getPromotionStatus(), newPromotion);

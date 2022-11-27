@@ -142,6 +142,41 @@ public class CommonFunction {
         }
 
     }
+    
+    static public void adjustCustomerMoney(PaymentInfo payment) {
+        String bigString = "";
+        try ( Scanner sc = new Scanner(new File(path + "login.csv"))) {
+
+            sc.useDelimiter("\n");
+
+            while (sc.hasNextLine()) {
+                String[] values = sc.next().split(",");
+                String cardNumber = values[5].trim();
+
+                if (payment.getCardNumber().equals(cardNumber)) {
+                    values[8] = String.format("%,.2f", payment.getMoney());
+                }
+
+                for (String value : values) {
+                    bigString += value + ",";
+                }
+                
+                bigString = bigString.substring(0, bigString.length() - 1);
+                bigString += "\n";
+            }
+
+            bigString = bigString.substring(0, bigString.length() - 1);
+
+            FileWriter myWriter = new FileWriter(path + "login.csv", false);
+            myWriter.write(bigString);
+            myWriter.close();
+
+        } catch (FileNotFoundException ex) {
+            ;
+        } catch (IOException ex) {
+        }
+
+    }
 
     public static void readDiscounts() {
         Admin myAdmin = new Admin();

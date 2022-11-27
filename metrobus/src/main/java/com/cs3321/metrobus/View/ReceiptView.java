@@ -64,6 +64,7 @@ public class ReceiptView {
 
         System.out.println(line);
         CommonFunction.writeCSV_ReportInfo(payment, trip, ticket);
+        CommonFunction.adjustCustomerMoney(payment);
     }
 
 //    public static void main(String[] args) {

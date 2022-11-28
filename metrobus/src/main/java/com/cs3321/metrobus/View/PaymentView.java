@@ -19,24 +19,40 @@ public class PaymentView {
         System.out.printf(" --------------------------------%n");
      //   System.out.printf("| %-10s | %-10s |%n", " USER NAME", "PASSWORD");
         String id, cvc;
-        int many;
+        int many = 0;
         Scanner s = new Scanner(System.in);
         System.out.print("What trip you are:");//username:user
         id = s.nextLine();
-        System.out.print("How many ticket(s) you want:");//password:user
-        many = Integer.parseInt(s.nextLine());
-        while(many<=0){
-            System.out.print("Incorrect input---Try again: ");
-            many = Integer.parseInt(s.nextLine());
+        Trip trip = new Trip();
+        while (!trip.checkID(id)){
+            System.out.print("Invalid ID---Try again: ");
+            id = s.nextLine();
         }
-            
+        System.out.print("How many ticket(s) you want:");//password:user
+        String ticket = s.nextLine();
+        boolean validInt=false;
+        while(!validInt){
+            try{
+                many = Integer.parseInt(ticket);
+                while(many<=0){
+                    System.out.print("Incorrect input---Try again: ");
+                    many = Integer.parseInt(s.nextLine());
+                }
+                break;
+            }  
+            catch(NumberFormatException e){
+                System.out.println( "not Valid Number---Try again");
+                System.out.print("How many ticket(s) you want:");
+                ticket = s.nextLine();
+            }
+        }
         System.out.printf(" --------------------------------%n");
         
         System.out.print("Enter your CVC:");//password:user
         cvc = s.nextLine();
         System.out.printf(" --------------------------------%n");
         
-        Trip trip = new Trip();
+        //Trip trip = new Trip();
         trip.readyPayment(id, many,cvc);
         
     }

@@ -44,8 +44,9 @@ public class Payment {
         Date date_exp = CommonFunction.convertStringToDate(payment.getExpireDate());
 
         int a = today.compareTo(date_exp);
-
-        if (payment.getCardNumber().length() != 19 || payment.getCardNumber().isBlank() || CommonFunction.isNumeric(payment.getCardNumber())) {
+        // || CommonFunction.isNumeric(payment.getCardNumber()) payment.getCardNumber().length() != 16 
+        if (!CommonFunction.validitychk(Long.parseLong(payment.getCardNumber()))|| payment.getCardNumber().isBlank()) {
+            System.out.println("error1");
             return false;
         }
 
@@ -59,12 +60,13 @@ public class Payment {
         }
 
         if (payment.getMoney() < price) {
-            System.out.println("This card is not enough money");
-            System.out.println("You only have: " + payment.getMoney());
+            System.out.println("Insufficient balance.");
+            System.out.println("Current balance is: " + payment.getMoney());
             return false;
         }
 
         if (payment.getExpireDate().length() <= 3 || payment.getExpireDate().isBlank() || today.compareTo(date_exp) != -1) {
+            System.out.println("error2");
             return false;
         }
 
@@ -96,12 +98,13 @@ public class Payment {
                     String pass = values[1].trim();
                     String role = values[2].trim();
                     String name = values[3].trim();
+                    String sex = values[4].trim();
                     String card = values[5].trim();
                     String exp_date = values[6].trim();
                     String cvc = values[7].trim();
                     Double money = Double.valueOf(values[8].trim());
 
-                    payment = new PaymentInfo(card, name, exp_date, cvc, money, user_name, pass, role);
+                    payment = new PaymentInfo(card, name, exp_date, cvc, money, user_name, pass, role, sex);
 
                     return payment;
                 }

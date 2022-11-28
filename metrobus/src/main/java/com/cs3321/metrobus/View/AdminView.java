@@ -5,6 +5,7 @@
 package com.cs3321.metrobus.View;
 import com.cs3321.metrobus.Controllers.Admin;
 import com.cs3321.metrobus.Controllers.CommonFunction;
+import com.cs3321.metrobus.Entities.PaymentInfo;
 import java.util.Scanner;
 /**
  *
@@ -36,4 +37,15 @@ public class AdminView extends Admin {
         TripView.displayTable();
     }
     
+    public void addAdmin() {
+        PaymentInfo newProfile = CommonFunction.getPersonLogin("1");
+        System.out.println("\n\nSending to File: \n" + "Username: " + newProfile.getUsername() + "\n" + "Password: " + newProfile.getPassword() + "\n" + "Name: " + newProfile.getName() + "\n" + "Sex: " + newProfile.getSex() + "\n" + "Card: **** **** **** " + newProfile.getCardNumber().substring(12) + "\n" + "Expiry: " + newProfile.getExpireDate() + "\n" + "CVC: " + newProfile.getCvc() + "\n" + "Balance: " + newProfile.getMoney());
+        CommonFunction.writeLogin(newProfile);
+    }
+    
+    public void addStaff() {
+        PaymentInfo newProfile = CommonFunction.getPersonLogin("2");
+        System.out.println("\n\nSending to File: \n" + "Username: " + newProfile.getUsername() + "\n" + "Password: " + newProfile.getPassword() + "\n" + "Name: " + newProfile.getName() + "\n" + "Sex: " + newProfile.getSex() + "\n" + "Card: **** **** **** " + newProfile.getCardNumber().substring(12) + "\n" + "Expiry: " + newProfile.getExpireDate() + "\n" + "CVC: " + newProfile.getCvc() + "\n" + "Balance: " + newProfile.getMoney());
+        CommonFunction.writeLogin(newProfile);
+    }
 }

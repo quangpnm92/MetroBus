@@ -19,8 +19,8 @@ public class CustomerView extends Customer {
     @Override
     public void displayTable() {
         ArrayList<PeopleInfo> customers = CommonFunction.readCSV(CommonFunction.customer);
-        
-        String line = new String(new char[39]).replace('\0', '-');
+        //before 39
+        String line = new String(new char[51]).replace('\0', '-');
         
         String name;
         //String username;
@@ -28,13 +28,13 @@ public class CustomerView extends Customer {
 
         System.out.println(line);
         System.out.printf("|%s|%n",
-                StringUtils.center("All Customers", 38));
+                StringUtils.center("Customer List", 50)); //before 38
         System.out.println(line);
         
         System.out.printf("|%s|%s|%n",
-                StringUtils.center("Name", 18),
+                StringUtils.center("Name", 24), //before 18
                 //StringUtils.center("Username", 18),
-                StringUtils.center("Gender", 19));
+                StringUtils.center("Gender", 25)); //before 19
         System.out.println(line);
         
         
@@ -46,9 +46,9 @@ public class CustomerView extends Customer {
             
         
         System.out.printf("|%s|%s|%n",
-                StringUtils.center(name, 18),
+                StringUtils.center(name, 24), //before 18
                 //StringUtils.center(username, 18),
-                StringUtils.center(gender, 19));
+                StringUtils.center(gender, 25)); //before 19
 
         }
     

@@ -8,10 +8,12 @@ import com.cs3321.metrobus.Entities.PaymentInfo;
 import com.cs3321.metrobus.Entities.PeopleInfo;
 import com.cs3321.metrobus.Entities.ReportInfo;
 import com.cs3321.metrobus.Entities.TripInfo;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -256,5 +258,155 @@ public class CommonFunction {
         }
         return reports;
     }
+    
+    // Return true if the card number is valid
+    public static boolean validitychk(long cnumber) {
+        return (thesize(cnumber) >= 13 && thesize(cnumber) <= 16) && (prefixmatch(cnumber, 4)
+            || prefixmatch(cnumber, 5) || prefixmatch(cnumber, 37) || prefixmatch(cnumber, 6))
+            && ((sumdoubleeven(cnumber) + sumodd(cnumber)) % 10 == 0);
+    }
+    
+    // Get the result from Step 2
+    public static int sumdoubleeven(long cnumber) {
+        int sum = 0;
+        String num = cnumber + "";
+        for (int i = thesize(cnumber) - 2; i >= 0; i -= 2)
+            sum += getDigit(Integer.parseInt(num.charAt(i) + "") * 2);
+        return sum;
+    }
+    
+    // Return this cnumber if it is a single digit, otherwise,
+    // return the sum of the two digits
+    public static int getDigit(int cnumber) {
+        if (cnumber < 9)
+            return cnumber;
+        return cnumber / 10 + cnumber % 10;
+    }
+   
+    // Return sum of odd-place digits in cnumber
+    public static int sumodd(long cnumber) {
+        int sum = 0;
+        String num = cnumber + "";
+        for (int i = thesize(cnumber) - 1; i >= 0; i -= 2)
+            sum += Integer.parseInt(num.charAt(i) + "");
+        return sum;
+    }
+     
+   // Return true if the digit d is a prefix for cnumber
+    public static boolean prefixmatch(long cnumber, int d) {
+        return getprefx(cnumber, thesize(d)) == d;
+    }
+    
+   // Return the number of digits in d
+    public static int thesize(long d) {
+      String num = d + "";
+      return num.length();
+    }
+   
+    // Return the first k number of digits from
+    // number. If the number of digits in number
+    // is less than k, return number.
+    public static long getprefx(long cnumber, int k) {
+      if (thesize(cnumber) > k) {
+         String num = cnumber + "";
+         return Long.parseLong(num.substring(0, k));
+      }
+      return cnumber;
+    }
+    
+    public static boolean validateSex(String input) {
+        return input.equals("Male") || input.equals("Female");
+    }
 
+    public static void writeLogin(PaymentInfo newProfile) {
+        try(FileWriter fw = new FileWriter(CommonFunction.path + "login.csv", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw)) {
+                //out.println("the text");
+                //out.println("more text");
+                out.print("\n");
+                out.print(newProfile.getUsername() + ",");
+                out.print(newProfile.getPassword() + ",");
+                out.print(newProfile.getRole() + ",");
+                out.print(newProfile.getName() + ",");
+                out.print(newProfile.getSex() + ",");
+                out.print(newProfile.getCardNumber() + ",");
+                out.print(newProfile.getExpireDate() + ",");
+                out.print(newProfile.getCvc() + ",");
+                out.print(newProfile.getMoney());
+                out.close();
+        } catch (IOException e) {
+            System.err.println("Error loading file");
+        }
+    }
+    
+    public static PaymentInfo getPersonLogin(String role) {
+        PaymentInfo newPerson = new PaymentInfo();
+        String input = new String();
+        String input2 = new String();
+        String pass1 = "";
+        String pass2 = "";
+        String expDate = new String();
+        String cvc = new String();
+        Double balance;
+        long creditCardNumber = 0;
+        String stringCreditCardNumber = new String();
+        Scanner sc = new Scanner(System.in);
+       
+       
+        System.out.println("Adding a new profile.");
+        System.out.print("Enter the username: ");
+        //input = ;
+        newPerson.setUsername(sc.nextLine());
+        
+        do {
+            System.out.print("Enter the customer's password: ");
+            pass1 = sc.nextLine();
+            System.out.print("Re-enter the customer's password: ");
+            pass2 = sc.nextLine();
+            
+            if (!pass1.equals(pass2)) {
+                System.out.println("Passwords do not match. Please enter again.");
+            }
+        }while(!pass1.equals(pass2));
+        
+        newPerson.setPassword(pass1);
+        newPerson.setRole(role);
+        System.out.print("Enter the customer's whole name: ");
+        newPerson.setName(sc.nextLine());
+        
+        do {
+            System.out.print("Enter the customer's sex, Male/Female: ");
+            input = sc.nextLine();
+            if(!(input.equals("Male") || input.equals("Female"))) {
+                System.out.println("Invalid input. Please try again.");
+            }
+        }while(!(input.equals("Male") || input.equals("Female")));
+        
+        newPerson.setSex(input);
+        do {
+            if (creditCardNumber != 0) {
+                System.out.println("Invalid credit card. Please enter again");
+            }
+            System.out.print("Enter credit card number: ");
+            creditCardNumber = sc.nextLong();
+            
+        }while(!CommonFunction.validitychk(creditCardNumber));
+        
+        stringCreditCardNumber = Long.toString(creditCardNumber);
+        newPerson.setCardNumber(stringCreditCardNumber);
+        sc.nextLine(); // cleaning the input buffer stream
+        System.out.print("Enter expiry date in format MMYY: ");
+        expDate = sc.nextLine();
+        newPerson.setExpireDate(expDate);
+        System.out.print("Enter card CVC: ");
+        cvc = sc.nextLine();
+        
+        newPerson.setCvc(cvc);
+        System.out.print("Enter load balance: ");
+        balance = sc.nextDouble();
+        newPerson.setMoney(balance);
+        
+        return newPerson;
+    }
 }

@@ -54,8 +54,8 @@ public class PaymentInfo extends AccountInfo {
         this.cvc = cvc;
     }
 
-    public PaymentInfo(String cardNumber, String name, String expireDate, String cvc, double money, String username, String password, String role) {
-        super(username, password, role);
+    public PaymentInfo(String cardNumber, String name, String expireDate, String cvc, double money, String username, String password, String role, String sex) {
+        super(username, password, role, sex);
         this.cardNumber = cardNumber;
         this.name = name;
         this.expireDate = expireDate;
@@ -64,7 +64,7 @@ public class PaymentInfo extends AccountInfo {
     }
     
     public PaymentInfo(PaymentInfo pay) {
-        super(pay.getUsername(), pay.getPassword(), pay.getRole());
+        super(pay.getUsername(), pay.getPassword(), pay.getRole(), pay.getSex());
         this.cardNumber = pay.cardNumber;
         this.name = pay.name;
         this.expireDate = pay.expireDate;

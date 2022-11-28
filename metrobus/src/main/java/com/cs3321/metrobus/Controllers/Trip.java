@@ -27,7 +27,7 @@ public class Trip {
                 return true;
         }
         else {
-            System.out.println("We dont' have ID " + id + " for trip");
+            System.out.println("Unavailable seats for ID " + id);
             return false;
         }
         return false;
@@ -46,6 +46,13 @@ public class Trip {
 
     public TripInfo extractInfo(String id) {
         Admin myAdmin = new Admin();
+        CommonFunction.readDiscounts();
+        Double promotion;
+        Double discount = 1.00;
+        if (myAdmin.getPromotionStatus()) {
+            promotion = myAdmin.getPromotion();
+            discount = discount - promotion; 
+        }
         try ( Scanner sc = new Scanner(new File(CommonFunction.path + "trip.csv"))) {
             sc.useDelimiter("\n");
 
@@ -57,8 +64,7 @@ public class Trip {
                     String arrival = values[2].trim();
                     int available = Integer.parseInt(values[3].trim());
                     int total = Integer.parseInt(values[4].trim());
-                    Double price = Double.parseDouble(values[5].trim()) * (1 - myAdmin.getPromotion());
-
+                    Double price = Double.parseDouble(values[5].trim()) * discount;
                     trip = new TripInfo(id, departure, arrival, available, total, price);
 
                     return trip;
@@ -81,7 +87,7 @@ public class Trip {
         }
         else
         {
-            System.out.println("Available is not enough");
+            System.out.println("Purchase exceeds available seats. Please try again.");
             PaymentView.displayPayment();
         }
     }

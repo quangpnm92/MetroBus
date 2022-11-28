@@ -11,50 +11,61 @@ package com.cs3321.metrobus.Entities;
 
 // role 0 = admin, role 1 = staff, role 2 = customer
 public class AccountInfo {
-  private String username; 
-  private String password; // private = restricted access
-  private String role;
-  private int tickets[][];
+    private String username; 
+    private String password; // private = restricted access
+    private String role;
+    private String sex;
+    private int tickets[][];
   
-  public String getUsername() {
-    return username;
-  }
-  public void setUsername(String username) {
-    this.username = username;
-  }
-  
-  public String getPassword() {
-    return password;
-  }
-  
-  public void setPassword(String password) {
-    this.password = password;
-  }
-  
-  public String getRole() {
-    return role;
-  }
-  public void setRole(String role) {
-    this.role = role;
-  }
-  
-  public int[][] getTickets() {
-    return tickets;
-  }
-  public void setTickets(int[][] tickets) {
-    this.tickets = tickets;
-  }
+    public String getUsername() {
+        return username;
+    }
     
+    public void setUsername(String username) {
+        this.username = username;
+    }
   
- public AccountInfo(String user, String pass, String role){
-     this.username = user;
-     this.password = pass;
-     this.role = role;
- }
+    public String getPassword() {
+        return password;
+    }
+  
+    public void setPassword(String password) {
+        this.password = password;
+    }
+  
+    public String getRole() {
+        return role;
+    }
+    
+    public void setRole(String role) {
+        this.role = role;
+    }
+  
+    public int[][] getTickets() {
+        return tickets;
+    }
+    public void setTickets(int[][] tickets) {
+        this.tickets = tickets;
+    }
+    
+    public AccountInfo(String user, String pass, String role, String sex){
+        this.username = user;
+        this.password = pass;
+        this.role = role;
+        this.sex = sex;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
  
- public AccountInfo() {
+ 
+    public AccountInfo() {
      
- }
- 
+    }
 }
 

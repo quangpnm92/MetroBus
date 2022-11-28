@@ -6,8 +6,15 @@ package com.cs3321.metrobus.View;
 import com.cs3321.metrobus.Controllers.CommonFunction;
 import com.cs3321.metrobus.Controllers.Staff;
 import com.cs3321.metrobus.Entities.PeopleInfo;
+import com.cs3321.metrobus.Entities.AccountInfo;
 import java.util.ArrayList;
 import org.apache.commons.lang3.StringUtils;
+import com.cs3321.metrobus.Controllers.Customer;
+import com.cs3321.metrobus.Entities.PaymentInfo;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
 /**
  *
  * @author katelynshimek
@@ -27,7 +34,7 @@ public class StaffView extends Staff {
         
         System.out.println(line);
         System.out.printf("|%s|%n",
-                StringUtils.center("All Staffs", 38));
+                StringUtils.center("Staff List", 38));
         System.out.println(line);
         
         System.out.printf("|%s|%s|%n",
@@ -55,8 +62,9 @@ public class StaffView extends Staff {
         System.out.println(line);
     }
     
-    public void generalReport()        
-    {
-        
+    public void addCustomerProfile() { //rhett 11-26-2022
+        PaymentInfo newProfile = CommonFunction.getPersonLogin("2");
+        System.out.println("\n\nSending to File: \n" + "Username: " + newProfile.getUsername() + "\n" + "Password: " + newProfile.getPassword() + "\n" + "Name: " + newProfile.getName() + "\n" + "Sex: " + newProfile.getSex() + "\n" + "Card: **** **** **** " + newProfile.getCardNumber().substring(12) + "\n" + "Expiry: " + newProfile.getExpireDate() + "\n" + "CVC: " + newProfile.getCvc() + "\n" + "Balance: " + newProfile.getMoney());
+        CommonFunction.writeLogin(newProfile);
     }
 }

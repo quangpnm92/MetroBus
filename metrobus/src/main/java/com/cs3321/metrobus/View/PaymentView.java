@@ -19,15 +19,15 @@ public class PaymentView {
         System.out.printf(" --------------------------------%n");
      //   System.out.printf("| %-10s | %-10s |%n", " USER NAME", "PASSWORD");
         String id, cvc;
-        int many;
+        int amount;
         Scanner s = new Scanner(System.in);
-        System.out.print("What trip you are:");//username:user
+        System.out.print("Trip ID to purchase:");//username:user
         id = s.nextLine();
-        System.out.print("How many ticket(s) you want:");//password:user
-        many = Integer.parseInt(s.nextLine());
-        while(many<=0){
+        System.out.print("Amount of ticket(s) to purchase:");//password:user
+        amount = Integer.parseInt(s.nextLine());
+        while(amount<=0){
             System.out.print("Incorrect input---Try again: ");
-            many = Integer.parseInt(s.nextLine());
+            amount = Integer.parseInt(s.nextLine());
         }
             
         System.out.printf(" --------------------------------%n");
@@ -37,7 +37,7 @@ public class PaymentView {
         System.out.printf(" --------------------------------%n");
         
         Trip trip = new Trip();
-        trip.readyPayment(id, many,cvc);
+        trip.readyPayment(id, amount,cvc);
         
     }
     

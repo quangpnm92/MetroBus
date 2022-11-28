@@ -44,7 +44,7 @@ public class ReceiptView {
                 StringUtils.center(arrivalCity, 23));
 
         System.out.printf("|%s|%s|%n",
-                StringUtils.center("Tickets Buy", 22),
+                StringUtils.center("Tickets Bought", 22),
                 StringUtils.center(ticket, 23));
 
         System.out.printf("|%s|%s|%n",

@@ -101,8 +101,8 @@ public class Customer implements Account{
     public void displayTable(){};
 
     public static void main(String[] args) {
-        AccountInfo staff = new AccountInfo("rhett", "123456", "1");
-        AccountInfo customer = new AccountInfo("cusRhett", "000000", "2");
+        //AccountInfo staff = new AccountInfo("rhett", "123456", "1");
+        //AccountInfo customer = new AccountInfo("cusRhett", "000000", "2");
         Customer customerOperation = new Customer();
 
 //        customerOperation.addCustomer(staff, customer, "newRhett", "000000", "2");

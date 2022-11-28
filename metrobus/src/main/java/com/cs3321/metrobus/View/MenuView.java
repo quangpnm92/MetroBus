@@ -21,7 +21,7 @@ public class MenuView {
         printHeader();
         while (!exit) {
             printAdminView();
-            int choice = getInput1();
+            int choice = getInput1(6);
             performAdminAction(choice);
         }
     }
@@ -30,7 +30,7 @@ public class MenuView {
         printHeader();
         while (!exit) {
             printStaffView();
-            int choice = getInput1();
+            int choice = getInput1(3);
             performStaffAction(choice);
         }
     }
@@ -39,7 +39,7 @@ public class MenuView {
         printHeader();
         while (!exit) {
             printUserView();
-            int choice = getInput1();
+            int choice = getInput1(2);
             performUserAction(choice);
         }
     }
@@ -52,10 +52,12 @@ public class MenuView {
 
     private void printAdminView() {
         System.out.println("\nPlease make a selection");
-        System.out.println("1) View Staffs info");
+        System.out.println("1) View Staff List");
         System.out.println("2) Enable/Disable Promotional Discounts");
         System.out.println("3) Modify Promotional Discount");
         System.out.println("4) View Trip table");
+        System.out.println("5) Add new Administrator");
+        System.out.println("6) Add new Staff");
         System.out.println("0) Exit");
     }
 
@@ -63,6 +65,7 @@ public class MenuView {
         System.out.println("\nPlease make a selection");
         System.out.println("1) View Customer info");
         System.out.println("2) Print General Report");
+        System.out.println("3) Add a new customer");
         System.out.println("0) Exit");
     }
 
@@ -73,11 +76,11 @@ public class MenuView {
         System.out.println("0) Exit");
     }
 
-    private int getInput1() {
+    private int getInput1(int limit) {
         Scanner kb = new Scanner(System.in);
 
         int choice = -1;
-        while (choice < 0 || choice > 4) {
+        while (choice < 0 || choice > limit) {
             try {
                 System.out.print("\nEnter your choice: ");
                 choice = Integer.parseInt(kb.nextLine());
@@ -109,8 +112,14 @@ public class MenuView {
             case 3 -> { //rhett 11-11-2022
                 myAdmin.setNewPromotion();
             }
-            case 4 -> {
+            case 4 -> { //rhett 11-28-2022
                 myAdmin.displayTable();
+            }
+            case 5 -> {
+                myAdmin.addAdmin();
+            }
+            case 6 -> {
+                myAdmin.addStaff();
             }
             default ->
                 System.out.println("Unknown error has occured.");
@@ -134,7 +143,9 @@ public class MenuView {
             }
 
             case 3 -> {
-                System.out.println("Out for 3");
+                StaffView current = new StaffView();
+                current.addCustomerProfile();
+                //System.out.println("Out for 3");
             }
             default ->
                 System.out.println("Unknown error has occured.");

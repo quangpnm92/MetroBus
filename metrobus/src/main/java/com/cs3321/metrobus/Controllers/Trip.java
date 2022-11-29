@@ -33,7 +33,7 @@ public class Trip {
         return false;
     }
 
-    private boolean checkID(String id) {
+    public boolean checkID(String id) {
         ArrayList<TripInfo> trips = CommonFunction.readCSV_TripInfo();
 
         for (int i = 0; i < trips.size(); i++) {

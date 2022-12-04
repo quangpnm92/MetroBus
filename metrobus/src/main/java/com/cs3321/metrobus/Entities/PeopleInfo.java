@@ -13,7 +13,6 @@ package com.cs3321.metrobus.Entities;
 
 public class PeopleInfo extends AccountInfo {
     private String name;
-    private String gender;
     private String cardNumber;
 
     public String getName() {
@@ -24,28 +23,20 @@ public class PeopleInfo extends AccountInfo {
         this.name = name;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public PeopleInfo(String name, String gender, String cardNumber) {
         this.name = name;
-        this.gender = gender;
+        this.setSex(gender);
         this.cardNumber = cardNumber;
     }
 
     public PeopleInfo() {
         this.name = "N/A";
-        this.gender = "N/A";
+        this.setSex("N/A");
         this.cardNumber = "N/A";
     }
 
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
-    }
-
-    public String getGender() {
-        return gender;
     }
 
     public String getCardNumber() {

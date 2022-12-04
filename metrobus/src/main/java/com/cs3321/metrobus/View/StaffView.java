@@ -48,7 +48,9 @@ public class StaffView extends Staff {
         for(int i=0;i<staff.size();i++){
         
             name= staff.get(i).getName();
-            gender= staff.get(i).getGender();
+            //gender= staff.get(i).getGender();
+            gender = staff.get(i).getSex();
+            
             
         
         System.out.printf("|%s|%s|%n",

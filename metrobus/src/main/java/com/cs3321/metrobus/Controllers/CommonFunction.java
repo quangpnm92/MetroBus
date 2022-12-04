@@ -352,6 +352,7 @@ public class CommonFunction {
         long creditCardNumber = 0;
         String stringCreditCardNumber = new String();
         Scanner sc = new Scanner(System.in);
+        boolean validCVC = false;
        
        
         System.out.println("Adding a new profile.");
@@ -399,8 +400,16 @@ public class CommonFunction {
         System.out.print("Enter expiry date in format MMYY: ");
         expDate = sc.nextLine();
         newPerson.setExpireDate(expDate);
-        System.out.print("Enter card CVC: ");
-        cvc = sc.nextLine();
+        do {
+            System.out.print("Enter card CVC: ");
+            cvc = sc.nextLine();
+            try {
+                Integer.parseInt(cvc);
+                validCVC = true;
+            }catch(NumberFormatException e) {
+                System.out.println("Invalid CVC. Please try again.");
+            }
+        }while(!(cvc.length() == 3) || !validCVC);
         
         newPerson.setCvc(cvc);
         System.out.print("Enter load balance: ");

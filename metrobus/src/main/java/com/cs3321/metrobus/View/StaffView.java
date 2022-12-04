@@ -20,6 +20,8 @@ import java.util.Set;
  * @author katelynshimek
  */
 
+//The following code outputs a table view of all Staff registered in the system
+
 
 public class StaffView extends Staff {
 
@@ -44,7 +46,7 @@ public class StaffView extends Staff {
         System.out.println(line);
         
         
-       
+       //iterates through ArrayList of all staff
         for(int i=0;i<staff.size();i++){
         
             name= staff.get(i).getName();

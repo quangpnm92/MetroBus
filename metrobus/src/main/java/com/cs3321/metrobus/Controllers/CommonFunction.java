@@ -64,7 +64,7 @@ public class CommonFunction {
         try {
             date = df.parse(str);
         } catch (ParseException ex) {
-
+            System.out.println("Date error.");
         }
         return date;
     }
@@ -277,7 +277,7 @@ public class CommonFunction {
             && ((sumdoubleeven(cnumber) + sumodd(cnumber)) % 10 == 0);
     }
     
-    // Get the result from Step 2
+    // Get the result from validitychk()
     public static int sumdoubleeven(long cnumber) {
         int sum = 0;
         String num = cnumber + "";

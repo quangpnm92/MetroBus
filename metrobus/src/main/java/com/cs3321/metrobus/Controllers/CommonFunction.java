@@ -80,7 +80,7 @@ public class CommonFunction {
                 }
             }
         } catch (FileNotFoundException ex) {
-            ;
+            System.out.println("FIle not found");
         }
         return peoples;
     }

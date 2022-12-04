@@ -32,11 +32,13 @@ import java.util.logging.Logger;
 
 public class CommonFunction {
  
-    //The line below is for Kate's Mac due to different pathing format
+    //The line below is for Kate's Mac due to different file pathing format.
+    //MUST be commented out for Windows users
     static public String path = "/Users/katelynshimek/NetBeansProjects/MetroBus/metrobus/src/main/java/com/cs3321/metrobus/Controllers/";
    
-    //The line below is for Windows users
-    // static public String path = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\";
+    //The line below is for Windows users.
+    //MUST be commented out for Kate's Mac.
+     //static public String path = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\";
     
     static public String admin = "0";
     static public String staff = "1";
@@ -52,11 +54,13 @@ public class CommonFunction {
         }
     }
     
+    //clear console output for neatness and user experience
     static public void clearConsole() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
+    //receives string and returns it as a date object
     static public Date convertStringToDate(String str) {
         SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
         str = str.substring(0, 2) + "-01-" + "20" + str.substring(2);
@@ -70,6 +74,7 @@ public class CommonFunction {
         return date;
     }
 
+    //adds all People objects to an ArrayList as program reads in from CSV
     static public ArrayList<PeopleInfo> readCSV(String choice) {
         ArrayList<PeopleInfo> peoples = new ArrayList<>();
 
@@ -95,6 +100,7 @@ public class CommonFunction {
         return peoples;
     }
 
+    //adds all Trip objects to ArrayList as program reads in from csv.
     static public ArrayList<TripInfo> readCSV_TripInfo() {
         ArrayList<TripInfo> trips = new ArrayList<>();
 
@@ -120,6 +126,7 @@ public class CommonFunction {
         return trips;
     }
 
+    //add Trip info to csv
     static public void writeCSV_TripInfo(TripInfo trip) {
         String bigString = "";
         try ( Scanner sc = new Scanner(new File(path + "trip.csv"))) {
@@ -156,6 +163,7 @@ public class CommonFunction {
 
     }
     
+    //used to adjust customer bank balance after purchases
     static public void adjustCustomerMoney(PaymentInfo payment) {
         String bigString = "";
         try ( Scanner sc = new Scanner(new File(path + "login.csv"))) {
@@ -166,6 +174,7 @@ public class CommonFunction {
                 String[] values = sc.next().split(",");
                 String cardNumber = values[5].trim();
 
+                //validates card number
                 if (payment.getCardNumber().equals(cardNumber)) {
                     values[8] = String.format("%,.2f", payment.getMoney());
                 }
@@ -192,6 +201,8 @@ public class CommonFunction {
 
     }
 
+    
+    //allows Admin to read in promotional discount info from csv
     public static void readDiscounts() {
         Admin myAdmin = new Admin();
         try ( Scanner sc = new Scanner(new File(CommonFunction.path + "discount.csv"))) {
@@ -202,6 +213,7 @@ public class CommonFunction {
         }
     }
 
+    //allows Admin to write promotional discount info to csv
     public static void writeDiscounts(boolean promotionStatus, Double promotionValue) {
         try {
             FileWriter myWriter = new FileWriter(CommonFunction.path + "discount.csv");
@@ -213,6 +225,7 @@ public class CommonFunction {
         }
     }
 
+    //create text file report of Trips sold
     static public void writeCSV_ReportInfo(PaymentInfo payment, TripInfo trip, String total) {
         String bigString = "";
 
@@ -243,6 +256,7 @@ public class CommonFunction {
         }
     }
 
+    
     static public ArrayList<ReportInfo> readCSV_GeneralReport() {
         ArrayList<ReportInfo> reports = new ArrayList<>();
 

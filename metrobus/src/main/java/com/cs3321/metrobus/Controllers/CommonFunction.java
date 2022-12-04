@@ -26,13 +26,23 @@ import java.util.logging.Logger;
  *
  * @author Quan
  */
-public class CommonFunction {
 
-    static public String path = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\";
+
+//The following code is a variety of common functions used throughout the program
+
+public class CommonFunction {
+ 
+    //The line below is for Kate's Mac due to different pathing format
+    static public String path = "/Users/katelynshimek/NetBeansProjects/MetroBus/metrobus/src/main/java/com/cs3321/metrobus/Controllers/";
+   
+    //The line below is for Windows users
+    // static public String path = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\";
+    
     static public String admin = "0";
     static public String staff = "1";
     static public String customer = "2";
 
+    //Tests if values are able to be converted to a double, used in exception handling/input validation
     static public boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
@@ -41,7 +51,7 @@ public class CommonFunction {
             return false;
         }
     }
-
+    
     static public void clearConsole() {
         System.out.print("\033[H\033[2J");
         System.out.flush();

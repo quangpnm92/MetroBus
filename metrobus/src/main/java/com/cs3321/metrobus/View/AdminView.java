@@ -11,6 +11,9 @@ import java.util.Scanner;
  *
  * @author rhett
  */
+
+//The following code consists of functions for Admin-role users
+
 public class AdminView extends Admin {
     
     public void displayEnablePromotion() {

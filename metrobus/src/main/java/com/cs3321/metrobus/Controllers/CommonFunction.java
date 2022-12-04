@@ -33,11 +33,10 @@ import java.util.logging.Logger;
 public class CommonFunction {
  
     //The line below is for Kate's Mac due to different pathing format
-    static public String path = "/Users/katelynshimek/NetBeansProjects/MetroBus/metrobus/src/main/java/com/cs3321/metrobus/Controllers/";
+    //static public String path = "/Users/katelynshimek/NetBeansProjects/MetroBus/metrobus/src/main/java/com/cs3321/metrobus/Controllers/";
    
     //The line below is for Windows users
-    // static public String path = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\";
-    
+    static public String path = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\";
     static public String admin = "0";
     static public String staff = "1";
     static public String customer = "2";
@@ -334,8 +333,6 @@ public class CommonFunction {
         try(FileWriter fw = new FileWriter(CommonFunction.path + "login.csv", true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw)) {
-                //out.println("the text");
-                //out.println("more text");
                 out.print("\n");
                 out.print(newProfile.getUsername() + ",");
                 out.print(newProfile.getPassword() + ",");
@@ -369,7 +366,6 @@ public class CommonFunction {
        
         System.out.println("Adding a new profile.");
         System.out.print("Enter the username: ");
-        //input = ;
         newPerson.setUsername(sc.nextLine());
         
         do {

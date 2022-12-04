@@ -43,13 +43,13 @@ public class AdminView extends Admin {
     }
     
     public void addAdmin() {
-        PaymentInfo newProfile = CommonFunction.getPersonLogin("1");
+        PaymentInfo newProfile = CommonFunction.getPersonLogin(CommonFunction.admin);
         System.out.println("\n\nSending to File: \n" + "Username: " + newProfile.getUsername() + "\n" + "Password: " + newProfile.getPassword() + "\n" + "Name: " + newProfile.getName() + "\n" + "Sex: " + newProfile.getSex() + "\n" + "Card: **** **** **** " + newProfile.getCardNumber().substring(12) + "\n" + "Expiry: " + newProfile.getExpireDate() + "\n" + "CVC: " + newProfile.getCvc() + "\n" + "Balance: " + newProfile.getMoney());
         CommonFunction.writeLogin(newProfile);
     }
     
     public void addStaff() {
-        PaymentInfo newProfile = CommonFunction.getPersonLogin("2");
+        PaymentInfo newProfile = CommonFunction.getPersonLogin(CommonFunction.staff);
         System.out.println("\n\nSending to File: \n" + "Username: " + newProfile.getUsername() + "\n" + "Password: " + newProfile.getPassword() + "\n" + "Name: " + newProfile.getName() + "\n" + "Sex: " + newProfile.getSex() + "\n" + "Card: **** **** **** " + newProfile.getCardNumber().substring(12) + "\n" + "Expiry: " + newProfile.getExpireDate() + "\n" + "CVC: " + newProfile.getCvc() + "\n" + "Balance: " + newProfile.getMoney());
         CommonFunction.writeLogin(newProfile);
     }

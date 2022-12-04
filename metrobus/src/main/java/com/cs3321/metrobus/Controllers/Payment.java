@@ -50,9 +50,9 @@ public class Payment {
         Date date_exp = CommonFunction.convertStringToDate(payment.getExpireDate());
 
         int a = today.compareTo(date_exp);
-        // || CommonFunction.isNumeric(payment.getCardNumber()) payment.getCardNumber().length() != 16 
+         
         if (!CommonFunction.validitychk(Long.parseLong(payment.getCardNumber()))|| payment.getCardNumber().isBlank()) {
-            System.out.println("error1");
+            System.out.println("Invalid Credit Card");
             return false;
         }
 
@@ -77,12 +77,6 @@ public class Payment {
         }
 
         return true;
-    }
-
-    public static void main(String[] args) {
-//        Payment a = new Payment();
-//        PaymentInfo payment = new PaymentInfo("4567898751212548", "Quang", "01-01-2023", "456", 30000);
-//        a.processPayment(payment, 20000);
     }
 
     public void makePayment(TripInfo trip, int available, String cvc) // -ghe

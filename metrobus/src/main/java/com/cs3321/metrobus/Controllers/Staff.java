@@ -11,6 +11,9 @@ import java.util.Scanner;
  *
  * @author rhett Oct 23, 2022
  */
+
+//The following code contains functions used to manipulate Staff objects, ie adding/removing/editing
+
 public class Staff implements Account {
     Scanner myScan = new Scanner(System.in);
     

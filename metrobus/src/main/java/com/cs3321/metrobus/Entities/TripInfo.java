@@ -10,6 +10,10 @@ import java.util.Date;
  *
  * @author Quang Pham
  */
+
+//The following code consists of setters/getters for all aspects of each Trip
+
+
 public class TripInfo {
     private String tripID;
     private String departureCity;

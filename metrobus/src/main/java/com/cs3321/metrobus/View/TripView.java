@@ -40,7 +40,16 @@ public class TripView{
 }
 
  */
+
+
 //kate's code below
+
+/**
+ *
+ * @author katelynshimek
+ */
+
+
 public class TripView extends Trip {
 
     public static void displayTable() {

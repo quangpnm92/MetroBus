@@ -9,6 +9,11 @@ import com.cs3321.metrobus.Entities.*;
 import org.apache.commons.lang3.StringUtils;
 import java.util.Date;
 
+/**
+ *
+ * @author katelynshimek
+ */
+
 public class ReceiptView {
 
     public static void printReceipt(PaymentInfo payment, TripInfo trip, double price, String ticket) {

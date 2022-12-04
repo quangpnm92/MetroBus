@@ -8,6 +8,11 @@ package com.cs3321.metrobus.Controllers;
  *
  * @author rhett
  */
+
+//The following code allows Admin staff to set and enable/disable promotional discounts.
+//Promotional discounts work by 1. Admin user sets amount they want to discount all ticket
+//prices by as a percentage 2. Admin user can enable/disable promotional pricing
+
 public class Admin {
     private static Double promotion = 0.00;
     private static boolean ongoingPromotion = false;

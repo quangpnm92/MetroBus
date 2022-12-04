@@ -15,6 +15,10 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author rhett Oct 23, 2022
  */
+
+//The following code contains functions used to manipulate Customer objects, ie adding/removing/editing
+
+
 public class Customer implements Account{
 
     Scanner myScan = new Scanner(System.in);

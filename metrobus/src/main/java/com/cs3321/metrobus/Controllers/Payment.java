@@ -18,6 +18,12 @@ import java.util.Scanner;
  *
  * @author Quan
  */
+
+//The following code implements functions needed to validate and execute purchases
+//In order for a purchase to be successful, the credit card and CVC info must be
+//validated against the csv file and the customer's balance (the 'money' variable)
+//must be greater than or equal to the amount to be deducted
+
 public class Payment {
 
     public PaymentInfo payment = new PaymentInfo();

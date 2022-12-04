@@ -24,10 +24,15 @@ public class AdminView extends Admin {
     public void setNewPromotion() {
         Scanner myScan = new Scanner(System.in);
         CommonFunction.readDiscounts();
-        Double newPromotion;
+        Double newPromotion = Double.MAX_VALUE;
         System.out.println("Current promotion value: " + this.getPromotion());
-        System.out.print("New promotion value: ");
-        newPromotion = myScan.nextDouble();
+        do {
+            System.out.print("New promotion value: ");
+            newPromotion = myScan.nextDouble();
+            if (newPromotion > 1.00 || newPromotion < 0.00) {
+                System.out.println("Invalid input. Please try again.");
+            }
+        }while (newPromotion > 1.00 || newPromotion < 0.00);
         this.editPromotion(newPromotion);
         CommonFunction.writeDiscounts(this.getPromotionStatus(), newPromotion);
         System.out.println("New promotion: " + this.getPromotion() + " is set.");

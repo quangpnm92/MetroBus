@@ -42,7 +42,8 @@ public class CustomerView extends Customer {
         for(int i=0;i<customers.size();i++){
         
             name= customers.get(i).getName();
-            gender= customers.get(i).getGender();
+            //gender= customers.get(i).getGender();
+            gender = customers.get(i).getSex();
             
         
         System.out.printf("|%s|%s|%n",

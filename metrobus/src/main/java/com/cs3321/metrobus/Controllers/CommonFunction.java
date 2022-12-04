@@ -139,8 +139,9 @@ public class CommonFunction {
             myWriter.close();
 
         } catch (FileNotFoundException ex) {
-            ;
+            System.out.println("File not found.");
         } catch (IOException ex) {
+            System.out.println("File error.");
         }
 
     }
@@ -174,8 +175,9 @@ public class CommonFunction {
             myWriter.close();
 
         } catch (FileNotFoundException ex) {
-            ;
+            System.out.println("File not found.");
         } catch (IOException ex) {
+            System.out.println("File error.");
         }
 
     }

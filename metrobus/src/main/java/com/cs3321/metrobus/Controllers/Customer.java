@@ -90,7 +90,7 @@ public class Customer implements Account{
                         customerAccount.setPassword(temp2);
                         System.out.println("New password set.");
                     } else {
-                        System.out.println("Unable to change. Mistaching passwords.");
+                        System.out.println("Unable to change. Mismaching passwords.");
                     }
                 } else {
                     System.out.println("Invalid current password.");

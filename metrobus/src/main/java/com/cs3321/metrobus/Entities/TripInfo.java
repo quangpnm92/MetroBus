@@ -100,17 +100,4 @@ public class TripInfo {
         this.price = price;
     }
     
-
-    public static void main(String[] args) {
-//        TripInfo x = new TripInfo("Houston", "Dallas", 50, 2022, 10, 22, 20, 45);
-        
-    }
-    
-    
-    
-    
-    
-    
-
-  
 }

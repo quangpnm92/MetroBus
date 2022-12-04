@@ -12,6 +12,9 @@ import java.util.ArrayList;
  *
  * @author Quan
  */
+
+
+
 interface Account {
     public void add(AccountInfo staffAccount, AccountInfo custAccount, String userInput, String passInput, String roleInput);
     public void edit(AccountInfo staffAccount, AccountInfo customerAccount);

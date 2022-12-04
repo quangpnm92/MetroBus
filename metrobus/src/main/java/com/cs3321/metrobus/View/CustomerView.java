@@ -13,6 +13,9 @@ import org.apache.commons.lang3.StringUtils;
  * @author katelynshimek
  */
 
+//The following code displays a table of all Customers registered in the system,
+//ie, in our ArrayList of all Customer objects
+
 
 public class CustomerView extends Customer {
 

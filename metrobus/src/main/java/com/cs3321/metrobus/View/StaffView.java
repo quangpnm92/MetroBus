@@ -50,14 +50,12 @@ public class StaffView extends Staff {
         for(int i=0;i<staff.size();i++){
         
             name= staff.get(i).getName();
-            //gender= staff.get(i).getGender();
             gender = staff.get(i).getSex();
             
             
         
         System.out.printf("|%s|%s|%n",
                 StringUtils.center(name, 18),
-                //StringUtils.center(username, 18),
                 StringUtils.center(gender, 19));
 
         }
@@ -67,7 +65,7 @@ public class StaffView extends Staff {
     }
     
     public void addCustomerProfile() { //rhett 11-26-2022
-        PaymentInfo newProfile = CommonFunction.getPersonLogin("2");
+        PaymentInfo newProfile = CommonFunction.getPersonLogin(CommonFunction.customer);
         System.out.println("\n\nSending to File: \n" + "Username: " + newProfile.getUsername() + "\n" + "Password: " + newProfile.getPassword() + "\n" + "Name: " + newProfile.getName() + "\n" + "Sex: " + newProfile.getSex() + "\n" + "Card: **** **** **** " + newProfile.getCardNumber().substring(12) + "\n" + "Expiry: " + newProfile.getExpireDate() + "\n" + "CVC: " + newProfile.getCvc() + "\n" + "Balance: " + newProfile.getMoney());
         CommonFunction.writeLogin(newProfile);
     }

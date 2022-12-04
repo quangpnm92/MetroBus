@@ -14,6 +14,9 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author Quan
  */
+
+//The following code prints a Receipt-style report of all trips purchased
+
 public class ReportView {
 
     static void printReport() {
@@ -21,11 +24,7 @@ public class ReportView {
         String line = new String(new char[48]).replace('\0', '-');
         Date date = new Date();
 
-        //delete the following once we pass parameters
-//        String customerName=payment.getName();
-//        String departureCity=trip.getDepartureCity();
-//        String arrivalCity=trip.getArrivalCity();
-        //**********************
+
         System.out.println(line);
 
         System.out.printf("|%s|%n",
@@ -33,6 +32,7 @@ public class ReportView {
         System.out.printf("|%s|%n",
                 StringUtils.center(date.toString(), 46));
 
+        //iterates through ArrayList of all purchased trip reports
         for (ReportInfo report : reports) {
             System.out.println(line);
             String customerName = report.getName();

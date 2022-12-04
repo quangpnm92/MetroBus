@@ -13,6 +13,10 @@ import java.util.Scanner;
  *
  * @author phamt
  */
+
+//The following code displays a login interface that validates usernames with passwords and
+//displays appropriate menu based on role
+
 public class LoginView {
 
     

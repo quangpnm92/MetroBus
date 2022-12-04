@@ -14,18 +14,23 @@ import java.util.Date;
  * @author katelynshimek
  */
 
+//The following code outputs a Receipt for a purchased Trip.
+//The StringUtils import allows for formatting centered text when the length
+//is not constant. It receives as parameters a string and the total length of the 
+//space to center that string within
+
 public class ReceiptView {
 
     public static void printReceipt(PaymentInfo payment, TripInfo trip, double price, String ticket) {
         CommonFunction.clearConsole();
+        //create line for dividing sections of Receipt
         String line = new String(new char[48]).replace('\0', '-');
         Date date = new Date();
 
-        //delete the following once we pass parameters
         String customerName = payment.getName();
         String departureCity = trip.getDepartureCity();
         String arrivalCity = trip.getArrivalCity();
-        //**********************
+       
 
         System.out.println(line);
 
@@ -68,7 +73,10 @@ public class ReceiptView {
                 StringUtils.center("Have a nice trip! :)", 46));
 
         System.out.println(line);
+        
+        //adds purchased trip to Report of all purchased trips
         CommonFunction.writeCSV_ReportInfo(payment, trip, ticket);
+        //updates customer's bank balance
         CommonFunction.adjustCustomerMoney(payment);
     }
 

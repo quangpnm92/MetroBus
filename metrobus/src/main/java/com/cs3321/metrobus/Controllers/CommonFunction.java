@@ -26,13 +26,27 @@ import java.util.logging.Logger;
  *
  * @author Quan
  */
-public class CommonFunction {
 
-    static public String path = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\";
+
+//The following code is a variety of common functions used throughout the program
+
+public class CommonFunction {
+ 
+    //The line below is for Kate's Mac due to different pathing format
+    //static public String path = "/Users/katelynshimek/NetBeansProjects/MetroBus/metrobus/src/main/java/com/cs3321/metrobus/Controllers/";
+    //The line below is for Kate's Mac due to different file pathing format.
+    //MUST be commented out for Windows users
+    static public String path = "/Users/katelynshimek/NetBeansProjects/MetroBus/metrobus/src/main/java/com/cs3321/metrobus/Controllers/";
+   
+    //The line below is for Windows users.
+    //MUST be commented out for Kate's Mac.
+     //static public String path = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\";
+    
     static public String admin = "0";
     static public String staff = "1";
     static public String customer = "2";
 
+    //Tests if values are able to be converted to a double, used in exception handling/input validation
     static public boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
@@ -41,12 +55,14 @@ public class CommonFunction {
             return false;
         }
     }
-
+    
+    //clear console output for neatness and user experience
     static public void clearConsole() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
+    //receives string and returns it as a date object
     static public Date convertStringToDate(String str) {
         SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
         str = str.substring(0, 2) + "-01-" + "20" + str.substring(2);
@@ -55,11 +71,12 @@ public class CommonFunction {
         try {
             date = df.parse(str);
         } catch (ParseException ex) {
-
+            System.out.println("Date error.");
         }
         return date;
     }
 
+    //adds all People objects to an ArrayList as program reads in from CSV
     static public ArrayList<PeopleInfo> readCSV(String choice) {
         ArrayList<PeopleInfo> peoples = new ArrayList<>();
 
@@ -85,6 +102,7 @@ public class CommonFunction {
         return peoples;
     }
 
+    //adds all Trip objects to ArrayList as program reads in from csv.
     static public ArrayList<TripInfo> readCSV_TripInfo() {
         ArrayList<TripInfo> trips = new ArrayList<>();
 
@@ -110,6 +128,7 @@ public class CommonFunction {
         return trips;
     }
 
+    //add Trip info to csv
     static public void writeCSV_TripInfo(TripInfo trip) {
         String bigString = "";
         try ( Scanner sc = new Scanner(new File(path + "trip.csv"))) {
@@ -146,6 +165,7 @@ public class CommonFunction {
 
     }
     
+    //used to adjust customer bank balance after purchases
     static public void adjustCustomerMoney(PaymentInfo payment) {
         String bigString = "";
         try ( Scanner sc = new Scanner(new File(path + "login.csv"))) {
@@ -156,6 +176,7 @@ public class CommonFunction {
                 String[] values = sc.next().split(",");
                 String cardNumber = values[5].trim();
 
+                //validates card number
                 if (payment.getCardNumber().equals(cardNumber)) {
                     values[8] = String.format("%,.2f", payment.getMoney());
                 }
@@ -182,6 +203,8 @@ public class CommonFunction {
 
     }
 
+    
+    //allows Admin to read in promotional discount info from csv
     public static void readDiscounts() {
         Admin myAdmin = new Admin();
         try ( Scanner sc = new Scanner(new File(CommonFunction.path + "discount.csv"))) {
@@ -192,6 +215,7 @@ public class CommonFunction {
         }
     }
 
+    //allows Admin to write promotional discount info to csv
     public static void writeDiscounts(boolean promotionStatus, Double promotionValue) {
         try {
             FileWriter myWriter = new FileWriter(CommonFunction.path + "discount.csv");
@@ -203,6 +227,7 @@ public class CommonFunction {
         }
     }
 
+    //create text file report of Trips sold
     static public void writeCSV_ReportInfo(PaymentInfo payment, TripInfo trip, String total) {
         String bigString = "";
 
@@ -233,6 +258,7 @@ public class CommonFunction {
         }
     }
 
+    
     static public ArrayList<ReportInfo> readCSV_GeneralReport() {
         ArrayList<ReportInfo> reports = new ArrayList<>();
 
@@ -268,7 +294,7 @@ public class CommonFunction {
             && ((sumdoubleeven(cnumber) + sumodd(cnumber)) % 10 == 0);
     }
     
-    // Get the result from Step 2
+    // Get the result from validitychk()
     public static int sumdoubleeven(long cnumber) {
         int sum = 0;
         String num = cnumber + "";
@@ -324,8 +350,6 @@ public class CommonFunction {
         try(FileWriter fw = new FileWriter(CommonFunction.path + "login.csv", true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw)) {
-                //out.println("the text");
-                //out.println("more text");
                 out.print("\n");
                 out.print(newProfile.getUsername() + ",");
                 out.print(newProfile.getPassword() + ",");
@@ -359,7 +383,6 @@ public class CommonFunction {
        
         System.out.println("Adding a new profile.");
         System.out.print("Enter the username: ");
-        //input = ;
         newPerson.setUsername(sc.nextLine());
         
         do {

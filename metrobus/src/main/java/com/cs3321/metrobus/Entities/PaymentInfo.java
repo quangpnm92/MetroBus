@@ -1,6 +1,11 @@
 
 package com.cs3321.metrobus.Entities;
 
+
+//The following code consists of setter/getter functions for users' Payment Info.
+//In the real world, we would use a third party payment software to ensure
+//security and privacy.
+
 public class PaymentInfo extends AccountInfo {
     
     static public PaymentInfo paymentinfo_login;

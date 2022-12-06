@@ -19,6 +19,9 @@ public class Trip {
 
     public TripInfo trip = new TripInfo();
 
+    //check if number of seats is available for specified trip by first validating
+    //trip ID and then checking desired seats against current available seats
+    //registered for that trip
     private boolean checkSeat(String id, int available) {
         if (checkID(id)) {
             TripInfo trip_extract = extractInfo(id);
@@ -33,6 +36,8 @@ public class Trip {
         return false;
     }
 
+    //verifies trip ID is registered to an available Trip in system, ie exists
+    //in our ArrayList of all Trips
     public boolean checkID(String id) {
         ArrayList<TripInfo> trips = CommonFunction.readCSV_TripInfo();
 
@@ -44,6 +49,7 @@ public class Trip {
         return false;
     }
 
+    //reads info from CSV about trip and applies promotional discount, if enabled
     public TripInfo extractInfo(String id) {
         Admin myAdmin = new Admin();
         CommonFunction.readDiscounts();
@@ -57,13 +63,15 @@ public class Trip {
             sc.useDelimiter("\n");
 
             while (sc.hasNextLine()) {
+                //delimiting csv lines by commas and storing in appropriate variables
                 String[] values = sc.next().split(",");
-
+                
                 if ((id.equals(values[0].trim()))) {
                     String departure = values[1].trim();
                     String arrival = values[2].trim();
                     int available = Integer.parseInt(values[3].trim());
                     int total = Integer.parseInt(values[4].trim());
+                    //adjusts price with promotional discount if enabled
                     Double price = Double.parseDouble(values[5].trim()) * discount;
                     trip = new TripInfo(id, departure, arrival, available, total, price);
 
@@ -77,6 +85,8 @@ public class Trip {
         return trip;
     }
     
+    //function receives validated info about desired purchase and validates
+    //purchase possible based on available seats on trip
     public void readyPayment(String id, int available, String cvc)
     {
         Payment payment = new Payment();

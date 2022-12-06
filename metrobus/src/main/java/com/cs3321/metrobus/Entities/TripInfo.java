@@ -10,6 +10,10 @@ import java.util.Date;
  *
  * @author Quang Pham
  */
+
+//The following code consists of setters/getters for all aspects of each Trip
+
+
 public class TripInfo {
     private String tripID;
     private String departureCity;
@@ -96,17 +100,4 @@ public class TripInfo {
         this.price = price;
     }
     
-
-    public static void main(String[] args) {
-//        TripInfo x = new TripInfo("Houston", "Dallas", 50, 2022, 10, 22, 20, 45);
-        
-    }
-    
-    
-    
-    
-    
-    
-
-  
 }

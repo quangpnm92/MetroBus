@@ -9,10 +9,13 @@ package com.cs3321.metrobus.Entities;
  * @author Quang Pham
  */
 
-// role 0 = admin, role 1 = staff, role 2 = customer
+//The following code consists of setter/getter functions for users' Account Info.
+//User role is classified as 0 = admin, 1 = staff, 2 = customer.
+//This is how the program determines which menu to display to the user.
+
 public class AccountInfo {
     private String username; 
-    private String password; // private = restricted access
+    private String password; // private = restricted access. In the real world, password would be encrypted
     private String role;
     private String sex;
     private int tickets[][];
@@ -62,7 +65,6 @@ public class AccountInfo {
     public void setSex(String sex) {
         this.sex = sex;
     }
- 
  
     public AccountInfo() {
      

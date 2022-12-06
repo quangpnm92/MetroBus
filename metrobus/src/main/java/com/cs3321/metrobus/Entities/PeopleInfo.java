@@ -8,6 +8,9 @@ package com.cs3321.metrobus.Entities;
  *
  * @author Quan
  */
+
+//The following code consists of setters/getters for users' personal info
+
 public class PeopleInfo extends AccountInfo {
     private String name;
     private String cardNumber;

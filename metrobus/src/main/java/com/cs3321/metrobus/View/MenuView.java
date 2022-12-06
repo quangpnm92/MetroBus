@@ -13,6 +13,10 @@ import java.util.Scanner;
  *
  * @author huyph
  */
+
+//The following code displays Menu options based on users' role and executes
+//menu options based on user input
+
 public class MenuView {
 
     boolean exit;

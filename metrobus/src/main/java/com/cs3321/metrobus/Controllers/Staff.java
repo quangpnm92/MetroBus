@@ -11,6 +11,9 @@ import java.util.Scanner;
  *
  * @author rhett Oct 23, 2022
  */
+
+//The following code contains functions used to manipulate Staff objects, ie adding/removing/editing
+
 public class Staff implements Account {
     Scanner myScan = new Scanner(System.in);
     
@@ -102,16 +105,4 @@ public class Staff implements Account {
     
     @Override
     public void displayTable(){};
-    
-    public static void main(String[] args) {
-//        AccountInfo admin = new AccountInfo("rhett", "123456", "0", "Male");
-//        AccountInfo staff = new AccountInfo("staffRhett", "000000", "1", "Male");
-//        AccountInfo newStaff = new AccountInfo();
-//        Staff staffOperation = new Staff();
-        
-//        staffOperation.addStaff(admin, newStaff, "staffRhett2", "010203", "1");
-//        staffOperation.editStaff(admin, staff);
-//        staffOperation.removeStaff(admin, newStaff);
-//        
-    }
 }

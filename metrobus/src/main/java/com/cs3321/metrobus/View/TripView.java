@@ -9,6 +9,11 @@ import com.cs3321.metrobus.Controllers.Trip;
 import com.cs3321.metrobus.Entities.TripInfo;
 import java.util.ArrayList;
 import org.apache.commons.lang3.StringUtils;
+
+//The following code outputs a table of all available Trips in the system
+
+
+
 // Comment for trial - Rhett Oct 2022
 
 /**
@@ -40,7 +45,17 @@ public class TripView{
 }
 
  */
+
+
 //kate's code below
+
+/**
+ *
+ * @author katelynshimek
+ */
+
+
+
 public class TripView extends Trip {
 
     public static void displayTable() {
@@ -57,6 +72,8 @@ public class TripView extends Trip {
         double price;
         double promotion;
         double discount = 1.00;
+        //if Promotion is enabled, calculate percentage price of ticket relative
+        //to full price, ie 1.00
         if (myAdmin.getPromotionStatus()) {
             promotion = myAdmin.getPromotion();
             discount = discount - promotion; 
@@ -75,12 +92,14 @@ public class TripView extends Trip {
                 StringUtils.center("Seat Price", 18));
         System.out.println(line);
 
+         //iterates through ArrayList of all trips
         for (int i = 0; i < trips.size(); i++) {
             id = trips.get(i).getTripID();
             departureCity = trips.get(i).getDepartureCity();
             arrivalCity = trips.get(i).getArrivalCity();
             availableSeats = trips.get(i).getAvailable();
             totalSeats = trips.get(i).getTotal();
+            //apply discount by multiplying price with percentage price of ticket
             price = trips.get(i).getPrice() * discount;
 
             System.out.printf("|%s|%s|%s|%s|%s|%n",

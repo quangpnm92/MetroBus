@@ -15,6 +15,10 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author rhett Oct 23, 2022
  */
+
+//The following code contains functions used to manipulate Customer objects, ie adding/removing/editing
+
+
 public class Customer implements Account{
 
     Scanner myScan = new Scanner(System.in);
@@ -86,7 +90,7 @@ public class Customer implements Account{
                         customerAccount.setPassword(temp2);
                         System.out.println("New password set.");
                     } else {
-                        System.out.println("Unable to change. Mistaching passwords.");
+                        System.out.println("Unable to change. Mismaching passwords.");
                     }
                 } else {
                     System.out.println("Invalid current password.");
@@ -100,14 +104,4 @@ public class Customer implements Account{
     @Override
     public void displayTable(){};
 
-    public static void main(String[] args) {
-        //AccountInfo staff = new AccountInfo("rhett", "123456", "1");
-        //AccountInfo customer = new AccountInfo("cusRhett", "000000", "2");
-        Customer customerOperation = new Customer();
-
-//        customerOperation.addCustomer(staff, customer, "newRhett", "000000", "2");
-//        customerOperation.editCustomer(staff, customer);
-//        customerOperation.removeCustomer(staff, customer);
-
-    }
 }

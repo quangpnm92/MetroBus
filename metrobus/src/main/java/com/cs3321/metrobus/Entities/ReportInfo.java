@@ -8,6 +8,10 @@ package com.cs3321.metrobus.Entities;
  *
  * @author Quan
  */
+
+//The following code consists of setters/getters for attributes related to each Trip for use
+//in generating the Report of all trips
+
 public class ReportInfo {
     private String name;
     private String card;

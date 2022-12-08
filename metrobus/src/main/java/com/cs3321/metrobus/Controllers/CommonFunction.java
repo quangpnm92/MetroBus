@@ -18,6 +18,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,15 +37,15 @@ public class CommonFunction {
     //static public String path = "/Users/katelynshimek/NetBeansProjects/MetroBus/metrobus/src/main/java/com/cs3321/metrobus/Controllers/";
     //The line below is for Kate's Mac due to different file pathing format.
     //MUST be commented out for Windows users
-    static public String path = "/Users/katelynshimek/NetBeansProjects/MetroBus/metrobus/src/main/java/com/cs3321/metrobus/Controllers/";
+    //static public String path = "/Users/katelynshimek/NetBeansProjects/MetroBus/metrobus/src/main/java/com/cs3321/metrobus/Controllers/";
    
     //The line below is for Windows users.
     //MUST be commented out for Kate's Mac.
-     //static public String path = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\";
+    static public String path = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\cs3321\\metrobus\\Controllers\\";
     
-    static public String admin = "0";
-    static public String staff = "1";
-    static public String customer = "2";
+    final static public String admin = "0";
+    final static public String staff = "1";
+    final static public String customer = "2";
 
     //Tests if values are able to be converted to a double, used in exception handling/input validation
     static public boolean isNumeric(String str) {
@@ -415,8 +416,14 @@ public class CommonFunction {
                 System.out.println("Invalid credit card. Please enter again");
             }
             System.out.print("Enter credit card number: ");
-            creditCardNumber = sc.nextLong();
-            
+            try {
+                creditCardNumber = sc.nextLong();
+            }catch (NumberFormatException e) {
+                System.out.println("Invalid format.");
+            }catch (InputMismatchException e) {
+                System.out.println("Input mismatch");
+                sc.nextLine();
+            }
         }while(!CommonFunction.validitychk(creditCardNumber));
         
         stringCreditCardNumber = Long.toString(creditCardNumber);

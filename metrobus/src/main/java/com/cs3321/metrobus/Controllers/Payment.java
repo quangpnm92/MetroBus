@@ -35,7 +35,6 @@ public class Payment {
         if (checkCard(payment, price,cvc )) {
             payment.setMoney(payment.getMoney() - price);
             trip.setAvailable(trip.getAvailable() - ticket);
-            //trip.setTotal(trip.getTotal());
             ReceiptView.printReceipt(payment, trip,price, String.valueOf(ticket));
             CommonFunction.writeCSV_TripInfo(trip);
         } else {
@@ -46,7 +45,6 @@ public class Payment {
     private boolean checkCard(PaymentInfo payment, double price, String cvc) {
 
         Date today = new Date();
-
         Date date_exp = CommonFunction.convertStringToDate(payment.getExpireDate());
 
         int a = today.compareTo(date_exp);
@@ -56,12 +54,12 @@ public class Payment {
             return false;
         }
 
-        if (payment.getCvc().length() != 3 || payment.getCvc().isBlank() || !CommonFunction.isNumeric(payment.getCvc()) || !cvc.equals(payment.getCvc())) {
+        if (payment.getCvc().length() != 3 || !CommonFunction.isNumeric(payment.getCvc()) || !cvc.equals(payment.getCvc())) {
             System.out.println("---Invalid CVC---");
             return false;
         }
 
-        if (payment.getName().length() <= 3 || payment.getCvc().isBlank()) {
+        if (payment.getName().length() <= 3 || payment.getName().isBlank()) {
             return false;
         }
 
